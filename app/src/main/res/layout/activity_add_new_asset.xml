@@ -15,16 +15,20 @@
         android:padding="5dp">
 
         <com.google.android.material.textfield.TextInputLayout
-android:layout_margin="5dp"
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/TextLabel"
+            android:hint="Serial Number"
+            android:backgroundTint="@color/white"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SerialNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Serial Number" />
+
+                 />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -33,40 +37,45 @@ android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            style="@style/TextLabel"
+            android:hint="Asset Tag"
       >
 
             <com.google.android.material.textfield.TextInputEditText
                android:id="@+id/AssetTag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Asset Tag" />
+            />
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            style="@style/TextLabel"
             >
 
-            <com.google.android.material.textfield.TextInputEditText
+            <Spinner
                 android:id="@+id/type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Type" />
+            />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            style="@style/TextLabel"
             android:layout_margin="5dp"
+            android:hint="Description"
             >
 
             <com.google.android.material.textfield.TextInputEditText
               android:id="@+id/desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Description" />
+          />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,13 +83,16 @@ android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            style="@style/TextLabel"
+            android:hint="Location"
             >
 
-            <com.google.android.material.textfield.TextInputEditText
+            <Spinner
                android:id="@+id/loction"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
-                android:hint="Location" />
+              />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,13 +100,15 @@ android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            style="@style/TextLabel"
+            android:hint="Department"
             >
 
             <com.google.android.material.textfield.TextInputEditText
               android:id="@+id/dept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Department"
+
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -103,6 +117,8 @@ android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            style="@style/TextLabel"
+            android:hint="Status"
             >
 
             <Spinner
@@ -110,7 +126,7 @@ android:layout_margin="5dp"
                 android:layout_width="match_parent"
 
                 android:layout_height="wrap_content"
-                android:hint="Status" />
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,13 +134,15 @@ android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            style="@style/TextLabel"
+            android:hint="Asset Tag"
 
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Asset Tag" />
+     />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,13 +150,15 @@ android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            style="@style/TextLabel"
+            android:hint="Username"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/username"
                 android:layout_height="wrap_content"
-                android:hint="Username" />
+            />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,13 +166,15 @@ android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            style="@style/TextLabel"
+            android:hint="Remark"
             >
 
             <com.google.android.material.textfield.TextInputEditText
               android:id="@+id/remark"
                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Remark" />
+            />
 
         </com.google.android.material.textfield.TextInputLayout>
 
