@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Teddy App</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+
+    <string name="Minpassword">"minimum password"</string>
+    <string-array name="Status">
+
+        <item>assign</item>
+        <item>unassign</item>
+        <item>faulty</item>
+        <item>dispose</item>
+    </string-array>
+
+    <string-array name="gender">
+
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="positions">
+
+        <item>Admin</item>
+        <item>Technical Support Team</item>
+
+    </string-array>
+
+</resources>
