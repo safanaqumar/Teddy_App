@@ -54,7 +54,6 @@ private FirebaseAuth firebaseAuth;
         ArrayAdapter<String> spinadapter1 = new ArrayAdapter<>(Signup.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.positions));
         spinadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(spinadapter1);
-
         firebaseAuth = FirebaseAuth.getInstance();
     registerbtn = (Button) findViewById(R.id.registerbtn);
 

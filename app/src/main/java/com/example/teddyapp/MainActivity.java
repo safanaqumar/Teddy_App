@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -13,11 +14,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     private  CardView logout_cv,Add_asset_cv,update_cv,Track_cv,Report_cv,registeruser_cv,user_profile_cv,latest_activities_cv;
+    private TextView textviewwelcome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+textviewwelcome = (TextView) findViewById(R.id.welcometxt);
+
+      //  textviewwelcome.setText("Welcome Back!" +  );
         Add_asset_cv = (CardView) findViewById(R.id.Add_asset_cv);
         update_cv = (CardView) findViewById(R.id.update_cv);
         Track_cv = (CardView) findViewById(R.id.track_cv);
@@ -26,14 +33,13 @@ public class MainActivity extends AppCompatActivity {
         user_profile_cv = (CardView) findViewById(R.id.profile_cv);
         latest_activities_cv = (CardView) findViewById(R.id.latest_actvites_cv);
         logout_cv =(CardView) findViewById(R.id.logout_cv);
-
-update_cv.setOnClickListener(new View.OnClickListener() {
+        update_cv.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(MainActivity.this,Asset_update.class);
         startActivity(intent);
-    }
-});
+        }
+      });
 
         Add_asset_cv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +48,7 @@ update_cv.setOnClickListener(new View.OnClickListener() {
                 startActivity(intent);
             }
         });
+
         logout_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
