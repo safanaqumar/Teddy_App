@@ -1,29 +1,49 @@
 package com.example.teddyapp.AssetDatabase;
 
 public class AssetDatabase {
-    String Serial_num,Asset_tag,Description,Deprt,Remark;
+   private String Serial_num, Asset_tag,typeofasset, Description,location, Deprt,statusasset, Remark;
 
 
-    public AssetDatabase(String id, String serial_num, String asset_tag, String description, String deprt, String remark) {
+
+    public AssetDatabase() {
 
     }
 
-    public AssetDatabase(String serial_num, String asset_tag, String description, String deprt, String remark) {
-
-        Serial_num = serial_num;
-        Asset_tag = asset_tag;
-        Description = description;
-        Deprt = deprt;
-        Remark = remark;
+    public String getStatusasset() {
+        return statusasset;
     }
 
+    public void setStatusasset(String statusasset) {
+        this.statusasset = statusasset;
+    }
+
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public AssetDatabase(String serial_num, String asset_tag, String typeofasset, String description, String location, String deprt, String statusasset, String remark) {
+
+        this.typeofasset = typeofasset;
+       this.location = location;
+        this.statusasset = statusasset;
+        this.Serial_num = serial_num;
+        this.Asset_tag = asset_tag;
+        this.Description = description;
+        this.Deprt = deprt;
+        this.Remark = remark;
+    }
 
     public String getSerial_num() {
         return Serial_num;
     }
 
     public void setSerial_num(String serial_num) {
-        Serial_num = serial_num;
+        this.Serial_num = serial_num;
     }
 
     public String getAsset_tag() {
@@ -31,7 +51,15 @@ public class AssetDatabase {
     }
 
     public void setAsset_tag(String asset_tag) {
-        Asset_tag = asset_tag;
+        this.Asset_tag = asset_tag;
+    }
+
+    public String getTypeofasset() {
+        return typeofasset;
+    }
+
+    public void setTypeofasset(String typeofasset) {
+        this.typeofasset = typeofasset;
     }
 
     public String getDescription() {
@@ -39,7 +67,7 @@ public class AssetDatabase {
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.Description = description;
     }
 
     public String getDeprt() {
@@ -47,7 +75,7 @@ public class AssetDatabase {
     }
 
     public void setDeprt(String deprt) {
-        Deprt = deprt;
+        this.Deprt = deprt;
     }
 
     public String getRemark() {
@@ -55,6 +83,6 @@ public class AssetDatabase {
     }
 
     public void setRemark(String remark) {
-        Remark = remark;
+        this.Remark = remark;
     }
 }

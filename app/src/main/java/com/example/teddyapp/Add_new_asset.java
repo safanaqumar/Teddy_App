@@ -13,14 +13,16 @@ import com.example.teddyapp.AssetDatabase.AssetDatabase;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.zxing.Result;
 
-public class Add_new_asset extends AppCompatActivity {
-private Spinner statusspinner,location,type;
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+public class Add_new_asset extends AppCompatActivity  {
+private Spinner statusspinner,Location,type;
 private TextInputEditText serialno,Assettag,Description,Department,Remark;
 private Button Addasset,cancelasset ;
 
-DatabaseReference databaseReference;
-DatabaseReference databaseReference1;
+
 
 
     @Override
@@ -31,7 +33,7 @@ DatabaseReference databaseReference1;
 
         getSupportActionBar().setTitle("Add New Asset");
         statusspinner = (Spinner) findViewById(R.id.status);
-        location = (Spinner) findViewById(R.id.loction);
+        Location = (Spinner) findViewById(R.id.loction);
         type = (Spinner) findViewById(R.id.type);
         serialno = (TextInputEditText) findViewById(R.id.SerialNo);
         Assettag = (TextInputEditText) findViewById(R.id.AssetTag);
@@ -41,39 +43,38 @@ DatabaseReference databaseReference1;
         Addasset = (Button) findViewById(R.id.addasset);
         cancelasset = (Button)findViewById(R.id.cancelasset);
 
-
+       // FirebaseDatabase.getInstance().getReference().child("Add_Asset");
+        // FirebaseDatabase.getInstance().getReference().child("Child").child("Aseetdata").setValue("data");
 
         ArrayAdapter<String> spinerstatusdapter = new ArrayAdapter<>(Add_new_asset.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Status));
         spinerstatusdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         statusspinner.setAdapter(spinerstatusdapter);
-
+        ArrayAdapter<String> spinerstatusdaptertype = new ArrayAdapter<>(Add_new_asset.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.type));
+        spinerstatusdaptertype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        type.setAdapter(spinerstatusdaptertype);
+        ArrayAdapter<String> spinerstatusdapterlocation = new ArrayAdapter<>(Add_new_asset.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Location));
+        spinerstatusdapterlocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Location.setAdapter(spinerstatusdapterlocation);
         Addasset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference = FirebaseDatabase.getInstance().getReference("Uchild");
-                databaseReference1 = FirebaseDatabase.getInstance().getReference("Users");
-                //Geting all the values
+                  String serial_num = serialno.getText().toString();
+                  String asset_tag = Assettag.getText().toString();
+                  String typeofasset = type.getSelectedItem().toString();
 
-                String serial_num = serialno.getText().toString();
-                String asset_tag = Assettag.getText().toString();
-                String description = Description.getText().toString();
-                String deprt = Department.getText().toString();
-                String remark = Remark.getText().toString();
-String addbtn = Addasset.getText().toString();
-                   String id = databaseReference1.push().getKey();
-                   String userid = databaseReference.push().getKey();
+                  String description = Description.getText().toString();
+                  String location = Location.getSelectedItem().toString();
+                  String deprt = Department.getText().toString();
+                  String statusasset= statusspinner.getSelectedItem().toString();
+                  String remark = Remark.getText().toString();
+                  AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark);
+                DatabaseReference  reference = FirebaseDatabase.getInstance().getReference("Data");
+                  reference.child(serial_num).setValue(assetDatabase);
+                Toast.makeText(Add_new_asset.this,"Added",Toast.LENGTH_LONG).show();
 
-                   AssetDatabase assetDatabase = new AssetDatabase(id,serial_num,asset_tag,description,deprt,remark);
-                 //  databaseReference.child(deprt).setValue(assetDatabase);
-
-                FirebaseDatabase.getInstance().getReference().child("Users").child(userid).child("Uchild").setValue(assetDatabase);
-
-
-               // Toast.makeText(Add_new_asset.this,"",Toast.LENGTH_LONG).show();
-             //  databaseReference.push()
-//.setValue(assetDatabase);
             }
         });
     }
+
 
 }

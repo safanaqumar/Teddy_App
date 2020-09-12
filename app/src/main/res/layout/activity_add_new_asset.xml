@@ -48,26 +48,31 @@
             />
 
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            style="@style/TextLabel"
-            >
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="type"
+        android:textSize="16dp"
+           android:layout_marginTop="7dp"
+           android:layout_marginLeft="7dp">
+
+       </TextView>
+
 
             <Spinner
                 android:id="@+id/type"
+                android:layout_marginLeft="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
             />
 
-        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/TextLabel"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp"
             android:hint="Description"
             >
 
@@ -79,22 +84,25 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            style="@style/TextLabel"
-            android:hint="Location"
-            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="16dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="7dp">
+
+        </TextView>
+
 
             <Spinner
                android:id="@+id/loction"
                 android:layout_width="match_parent"
-
+android:layout_marginLeft="5dp"
                 android:layout_height="wrap_content"
               />
 
-        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -113,38 +121,26 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            style="@style/TextLabel"
-            android:hint="Status"
-            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="16dp"
+
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="7dp">
+
+            </TextView>
 
             <Spinner
                 android:id="@+id/status"
                 android:layout_width="match_parent"
-
+android:layout_marginLeft="5dp"
                 android:layout_height="wrap_content"
                 />
 
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            style="@style/TextLabel"
-            android:hint="Asset Tag"
-
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-     />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
