@@ -1,7 +1,13 @@
 package com.example.teddyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Camera;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,14 +19,14 @@ import com.example.teddyapp.AssetDatabase.AssetDatabase;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.zxing.Result;
-
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class Add_new_asset extends AppCompatActivity  {
 private Spinner statusspinner,Location,type;
-private TextInputEditText serialno,Assettag,Description,Department,Remark;
+public static TextInputEditText serialno,Assettag,Description,Department,Remark,User;
 private Button Addasset,cancelasset ;
+private Button qrscanner;
+    private static final int REQUEST_CAMERA = 1;
+
 
 
 
@@ -29,7 +35,7 @@ private Button Addasset,cancelasset ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_asset);
-
+        qrscanner = (Button) findViewById(R.id.qr);
 
         getSupportActionBar().setTitle("Add New Asset");
         statusspinner = (Spinner) findViewById(R.id.status);
@@ -39,9 +45,27 @@ private Button Addasset,cancelasset ;
         Assettag = (TextInputEditText) findViewById(R.id.AssetTag);
         Description = (TextInputEditText) findViewById(R.id.desc);
         Department = (TextInputEditText) findViewById(R.id.dept);
+        User = (TextInputEditText) findViewById(R.id.username);
         Remark = (TextInputEditText) findViewById(R.id.remark);
         Addasset = (Button) findViewById(R.id.addasset);
         cancelasset = (Button)findViewById(R.id.cancelasset);
+
+
+
+        qrscanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (ContextCompat.checkSelfPermission(Add_new_asset.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(Add_new_asset.this,
+                            new String[]{Manifest.permission.CAMERA},REQUEST_CAMERA);
+                } else {
+                    startActivity(new Intent(getApplicationContext(),QRreader.class));
+
+                }
+            }
+        });
 
        // FirebaseDatabase.getInstance().getReference().child("Add_Asset");
         // FirebaseDatabase.getInstance().getReference().child("Child").child("Aseetdata").setValue("data");
