@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "839968814346",
+    "firebase_url": "https://assetteddy-46070.firebaseio.com",
+    "project_id": "assetteddy-46070",
+    "storage_bucket": "assetteddy-46070.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839968814346:android:d58ba783e2315a833cb6f3",
+        "android_client_info": {
+          "package_name": "com.example.teddyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839968814346-9omasn0shstk1meogecovqmp8icug6un.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teddyapp",
+            "certificate_hash": "ec84cbee86358cec6fc2f3eede9622822bc04771"
+          }
+        },
+        {
+          "client_id": "839968814346-lb4dtpllbugdb8al97m7a1je4jovpm4i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teddyapp",
+            "certificate_hash": "c9c113310caceff463f542b21c248c48fdfeec83"
+          }
+        },
+        {
+          "client_id": "839968814346-iulo3p6947pjsqa61nmkddfv95r3tgkm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdwO1Uwzbgny02RaOT1WoJoJ7xckXzuTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839968814346-iulo3p6947pjsqa61nmkddfv95r3tgkm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
