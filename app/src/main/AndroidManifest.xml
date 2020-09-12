@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".qrscanner"></activity>
+        <activity android:name=".AddUser"></activity>
+        <activity android:name=".qrscanner" />
         <activity android:name=".Asset_update" />
         <activity android:name=".splash_screen" />
         <activity android:name=".Add_new_asset">
