@@ -22,6 +22,8 @@ private Spinner statusspinner,Location,type;
 private TextInputEditText serialno,Assettag,Description,Department,Remark;
 private Button Addasset,cancelasset ;
 
+    DatabaseReference AssetsDatabaseReference;;
+
 
 
 
@@ -42,6 +44,7 @@ private Button Addasset,cancelasset ;
         Remark = (TextInputEditText) findViewById(R.id.remark);
         Addasset = (Button) findViewById(R.id.addasset);
         cancelasset = (Button)findViewById(R.id.cancelasset);
+        AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("assets");
 
        // FirebaseDatabase.getInstance().getReference().child("Add_Asset");
         // FirebaseDatabase.getInstance().getReference().child("Child").child("Aseetdata").setValue("data");
@@ -68,8 +71,7 @@ private Button Addasset,cancelasset ;
                   String statusasset= statusspinner.getSelectedItem().toString();
                   String remark = Remark.getText().toString();
                   AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark);
-                DatabaseReference  reference = FirebaseDatabase.getInstance().getReference("Data");
-                  reference.child(serial_num).setValue(assetDatabase);
+                AssetsDatabaseReference.child(serial_num).setValue(assetDatabase);
                 Toast.makeText(Add_new_asset.this,"Added",Toast.LENGTH_LONG).show();
 
             }

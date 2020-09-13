@@ -19,35 +19,25 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class login_activity extends AppCompatActivity {
 
 
-    private EditText inputemail,inputpassword;
-    private ProgressBar progressBar;
-    private Button btnlogin;
+     EditText inputemail,inputpassword;
+     ProgressBar progressBar;
+     Button btnlogin;
 
-private FirebaseAuth firebaseAuth;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-    int id = item.getItemId();
-    switch (id){
-    case R.id.sign:
-Intent intent = new Intent(this,Signup.class);
-this.startActivity(intent);
-        break;
-        default:
-            return super.onOptionsItemSelected(item);
-}
-return true;
-    }
+    DatabaseReference AdminDatabaseReference;
+    DatabaseReference TechnicalDatabaseReference;
+    DatabaseReference CompilanceDatabaseReference;
+    DatabaseReference UserDatabaseReference;
+    FirebaseAuth firebaseAuth;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,10 +46,14 @@ return true;
     //    getSupportActionBar().hide();
         getSupportActionBar().setTitle("Login to Asset Teddy");
 
+        AdminDatabaseReference = FirebaseDatabase.getInstance().getReference("admin");
+        UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
+        TechnicalDatabaseReference = FirebaseDatabase.getInstance().getReference("technical");
+        CompilanceDatabaseReference = FirebaseDatabase.getInstance().getReference("compilance");
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
-        //Get firebase auth ins
-       firebaseAuth = FirebaseAuth.getInstance();
+
         // auth = FirebaseAuth.getInstance();
        if (firebaseAuth.getCurrentUser() != null){
             startActivity(new Intent(login_activity.this,MainActivity.class));
@@ -76,9 +70,9 @@ return true;
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email= inputemail.getText().toString();
+                final String userid= inputemail.getText().toString().toLowerCase();
                 final String password = inputpassword.getText().toString();
-                if (TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(userid)){
                     Toast.makeText(getApplicationContext(),"Enter Username!",Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -91,8 +85,11 @@ return true;
 
 
 
+
+
+
                 //authenticate user
-                firebaseAuth.signInWithEmailAndPassword(email,password)
+                firebaseAuth.signInWithEmailAndPassword(userid,password)
                 .addOnCompleteListener(login_activity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -110,7 +107,7 @@ return true;
                         }else {
 
                             Intent intent = new Intent(login_activity.this,MainActivity.class);
-                            intent.putExtra("Welcome username",email);
+                            intent.putExtra("Welcome username",userid);
                             startActivity(intent);
                             finish();
                         }
