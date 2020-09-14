@@ -2,7 +2,9 @@ package com.example.teddyapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompatSideChannelService;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,6 +19,8 @@ import com.example.teddyapp.usersdatabase.Admin;
 import com.example.teddyapp.usersdatabase.Compilance;
 import com.example.teddyapp.usersdatabase.Technical;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +37,7 @@ public class AddUser extends AppCompatActivity {
     DatabaseReference AdminDatabaseReference;
     DatabaseReference TechnicalDatabaseReference;
     DatabaseReference CompilanceDatabaseReference;
+    DatabaseReference UserDatabaseReference;
     FirebaseAuth firebaseAuth;
     public int check ;
 
@@ -54,6 +59,7 @@ public class AddUser extends AppCompatActivity {
         registerButton = (Button) findViewById(R.id.user_btn);
 
         AdminDatabaseReference = FirebaseDatabase.getInstance().getReference("admin");
+        UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
         TechnicalDatabaseReference = FirebaseDatabase.getInstance().getReference("technical");
         CompilanceDatabaseReference = FirebaseDatabase.getInstance().getReference("compilance");
         firebaseAuth = FirebaseAuth.getInstance();
@@ -73,16 +79,16 @@ public class AddUser extends AppCompatActivity {
                 final String USEREMAIL = UserEmail.getText().toString();
                 final String USERCONTACT = UserContact.getText().toString();
                 final String USERADDRESS = UserAddress.getText().toString();
-                final String USERID = UserID.getText().toString();
+                final String USERID = UserID.getText().toString().toLowerCase();
                 final String USERPASS = UserPass.getText().toString();
                 final String USERCONPASS = UserConPass.getText().toString();
                 final String USERGENDER = UserGender.getSelectedItem().toString();
                 final String USERPOSITION = UserPosition.getSelectedItem().toString();
                 if (USERPOSITION.equals("Admin")) {
-                    check =1;
+                    check = 1;
                 } else if (USERPOSITION.equals("Technical Support Team")) {
                     check = 2;
-                } else if (USERPOSITION.equals("Compilance")){
+                } else if (USERPOSITION.equals("Compilance")) {
                     check = 3;
                 }
 
@@ -115,95 +121,105 @@ public class AddUser extends AppCompatActivity {
                     Toast.makeText(AddUser.this, " ENTER CONFIRM PASSWORD", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (USERPASS.length()< 6){
-                    UserPass.setError(getString(R.string.Minpassword));
+                if (USERPASS.length() < 6) {
+                    UserPass.setError("Password should be of minimum 6 characters long");
                 }
 
 
-                firebaseAuth.createUserWithEmailAndPassword(USEREMAIL, USERPASS)
-                        .addOnCompleteListener(AddUser.this, new OnCompleteListener<AuthResult>() {
+                if (USERPASS.equals(USERCONPASS))
+                {
+                    if (check == 1) {
+                        Admin adminuser = new Admin(USERNAME,
+                                USERGENDER,
+                                USEREMAIL,
+                                USERCONTACT,
+                                USERPOSITION,
+                                USERADDRESS,
+                                USERID
+                        );
+
+                        FirebaseDatabase.getInstance().getReference("users").child("admin")
+                                .child(USERID)
+                                .setValue(adminuser).addOnFailureListener(new OnFailureListener() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if ((!task.isSuccessful()))  {
-
-                                    if (check==1) {
-                                        Admin adminuser = new Admin(USERNAME,
-                                                USERGENDER,
-                                                USEREMAIL,
-                                                USERCONTACT,
-                                                USERPOSITION,
-                                                USERADDRESS,
-                                                USERID
-                                        );
-
-                                        FirebaseDatabase.getInstance().getReference("admin")
-                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                .setValue(adminuser).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(AddUser.this, "registration complete", Toast.LENGTH_SHORT).show();
-                                                //startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-
-                                            }
-
-                                        });
-                                    } else if (check==3)
-                                    {
-                                        Compilance compilanceuser = new Compilance(USERNAME,
-                                                USERGENDER,
-                                                USEREMAIL,
-                                                USERCONTACT,
-                                                USERPOSITION,
-                                                USERADDRESS,
-                                                USERID
-                                        );
-
-                                        FirebaseDatabase.getInstance().getReference("compilance")
-                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                .setValue(compilanceuser).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(AddUser.this, "registration complete", Toast.LENGTH_SHORT).show();
-                                                //startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-
-                                            }
-
-                                        });
-                                    }
-                                    else if (check==2)
-                                    {
-                                        Technical technicaluser = new Technical(USERNAME,
-                                                USERGENDER,
-                                                USEREMAIL,
-                                                USERCONTACT,
-                                                USERPOSITION,
-                                                USERADDRESS,
-                                                USERID
-                                        );
-
-                                        FirebaseDatabase.getInstance().getReference("technical")
-                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                .setValue(technicaluser).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(AddUser.this, "registration complete", Toast.LENGTH_SHORT).show();
-                                                //startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-
-                                            }
-
-                                        });
-                                    }
-
-                                } else {
-                                    Toast.makeText(AddUser.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                }
-
-                                // ...
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AddUser.this, "registration failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(AddUser.this, "registration complete", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(AddUser.this, MainActivity.class);
+                                startActivity(intent);
                             }
                         });
 
+
+                    } else if (check == 3) {
+                        Compilance compilanceuser = new Compilance(USERNAME,
+                                USERGENDER,
+                                USEREMAIL,
+                                USERCONTACT,
+                                USERPOSITION,
+                                USERADDRESS,
+                                USERID
+                        );
+
+                        FirebaseDatabase.getInstance().getReference("compilance")
+                                .child(USERID)
+                                .setValue(compilanceuser).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AddUser.this, "registration failed", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(AddUser.this, "registration complete", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(AddUser.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                    } else if (check == 2) {
+                        Technical technicaluser = new Technical(USERNAME,
+                                USERGENDER,
+                                USEREMAIL,
+                                USERCONTACT,
+                                USERPOSITION,
+                                USERADDRESS,
+                                USERID
+                        );
+
+                        FirebaseDatabase.getInstance().getReference("technical")
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .setValue(technicaluser).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AddUser.this, "registration failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(AddUser.this, "registration complete", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(AddUser.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                    }
+
+                }else{
+                    UserConPass.setError("Incorrect Password");
+                }
             }
+
+
+
+                                // ...
+
+
+
+
         });
     }
 }

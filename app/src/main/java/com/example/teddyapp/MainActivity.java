@@ -60,5 +60,20 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
 
             }
         });
+        latest_activities_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UpdateUser.class);
+                startActivity(intent);
+            }
+        });
+        registeruser_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddUser.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

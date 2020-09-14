@@ -28,6 +28,8 @@ private Button qrscanner;
     private static final int REQUEST_CAMERA = 1;
 
 
+    DatabaseReference AssetsDatabaseReference;;
+
 
 
 
@@ -49,6 +51,7 @@ private Button qrscanner;
         Remark = (TextInputEditText) findViewById(R.id.remark);
         Addasset = (Button) findViewById(R.id.addasset);
         cancelasset = (Button)findViewById(R.id.cancelasset);
+        AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("assets");
 
 
 
@@ -92,8 +95,7 @@ private Button qrscanner;
                   String statusasset= statusspinner.getSelectedItem().toString();
                   String remark = Remark.getText().toString();
                   AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark);
-                DatabaseReference  reference = FirebaseDatabase.getInstance().getReference("Data");
-                  reference.child(serial_num).setValue(assetDatabase);
+                AssetsDatabaseReference.child(serial_num).setValue(assetDatabase);
                 Toast.makeText(Add_new_asset.this,"Added",Toast.LENGTH_LONG).show();
 
             }

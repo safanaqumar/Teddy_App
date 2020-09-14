@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="8dp"
     tools:context=".AddUser">
 
 
@@ -12,29 +12,28 @@
         android:id="@+id/text_input_layout_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="24dp"
-        android:hint="Name"
-        >
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Name">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:selectAllOnFocus="true"
-            />
+            android:selectAllOnFocus="true" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="10dp"
         android:layout_below="@+id/text_input_layout_name"
         android:layout_marginStart="15dp"
-        android:hint="Gender"
-        >
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:hint="Gender">
 
         <Spinner
             android:id="@+id/user_gender"
@@ -52,9 +51,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/gender"
         android:layout_marginStart="24dp"
-        android:hint="Email"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginTop="6dp">
+        android:hint="Email">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/user_email"
             android:layout_width="match_parent"
@@ -66,6 +66,7 @@
 
             />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/contact"
         android:layout_width="match_parent"
@@ -74,6 +75,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/user_contact"
             android:layout_width="match_parent"
@@ -84,18 +86,18 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="number"
-            android:selectAllOnFocus="true"
-            />
+            android:selectAllOnFocus="true" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_below="@+id/contact"
         android:id="@+id/pos"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contact"
         android:layout_marginStart="15dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="15dp"
 
-        android:layout_height="wrap_content">
+        android:layout_marginEnd="15dp">
 
         <Spinner
             android:id="@+id/user_position"
@@ -107,13 +109,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/adress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pos"
-        android:id="@+id/adress"
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/user_address"
             android:layout_width="match_parent"
@@ -131,10 +134,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/adress"
-        android:hint="User Name"
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="24dp">
+        android:layout_marginEnd="24dp"
+        android:hint="User Name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/user_id"
@@ -143,19 +146,20 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="text"
-            android:selectAllOnFocus="true"
-            />
+            android:selectAllOnFocus="true" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pasword"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/username1"
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
-        android:hint="@string/prompt_password"
         android:layout_marginEnd="24dp"
 
-        android:layout_height="wrap_content">
+        android:hint="@string/prompt_password">
+
         <EditText
             android:id="@+id/user_password"
             android:layout_width="match_parent"
@@ -165,19 +169,19 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            />
+            android:selectAllOnFocus="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/conpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/conpass"
+        android:layout_below="@+id/pasword"
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="24dp"
-        android:layout_below="@+id/pasword">
+        android:layout_marginEnd="24dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/user_confirmpass"
             android:layout_width="match_parent"
@@ -186,32 +190,52 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            />
+            android:selectAllOnFocus="true" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <ProgressBar
         android:id="@+id/loadingbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_below="@+id/conpass"
+        android:layout_centerInParent="true"
 
         android:visibility="gone"
 
 
         />
+
     <Button
         android:id="@+id/user_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="122dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="start"
-        android:layout_marginStart="48dp"
 
+        android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="67dp"
+        android:background="@color/black"
         android:enabled="true"
         android:text="Register"
+        android:textColor="@color/white"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <Button
+        android:id="@+id/user_btn3"
+        android:layout_width="122dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="67dp"
+        android:background="@color/black"
+        android:enabled="true"
+        android:text="Reset"
+        android:textColor="@color/white"
         app:layout_constraintVertical_bias="0.2" />
 
 
