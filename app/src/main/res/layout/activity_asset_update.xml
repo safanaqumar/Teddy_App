@@ -26,138 +26,27 @@
 
         </TextView>
         <Spinner
-            android:id="@+id/location"
+            android:id="@+id/Loction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
              />
-
-    </LinearLayout>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="150dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monitor"
-            android:layout_margin="20dp">
+            android:text="type"
+            android:textSize="19dp"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="8dp">
 
-        </Button>
-        <Button
-            android:layout_width="150dp"
+        </TextView>
+
+
+        <Spinner
+            android:id="@+id/type"
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="CPU">
-
-        </Button>
-
-    </LinearLayout>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Mouse">
-
-        </Button>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-
-            android:text="Keyboard">
-
-        </Button>
-
-    </LinearLayout>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-
-            android:text="phone">
-
-        </Button>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-
-            android:text="Headset">
-
-        </Button>
-
-    </LinearLayout>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="projector"
-            android:layout_margin="20dp"
-            >
-
-        </Button>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-
-            android:text="TV">
-
-        </Button>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Modem"
-            android:layout_margin="20dp"
-            >
-
-        </Button>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-
-            android:text="Printer">
-
-        </Button>
+            />
 
     </LinearLayout>
 

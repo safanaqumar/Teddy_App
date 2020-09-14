@@ -48,6 +48,16 @@
         <item>Bank Rakyat Level 27</item>
 
     </string-array>
+    <string-array name="Software_Installed">
+
+        <item>Microsoft Office
+        </item>
+        <item>Microsoft dynamics</item>
+        <item>Winddows Explorer</item>
+        <item>Firefox</item>
+        <item>Hub spot</item>
+
+    </string-array>
     <string-array name="Department">
 
         <item>HRD</item>
