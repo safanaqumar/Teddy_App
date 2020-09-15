@@ -45,6 +45,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pos"
+        android:layout_width="357dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/contact"
+
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.549">
+
+        <Spinner
+            android:id="@+id/loginuser_position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:entries="@array/positions"
+            android:selectAllOnFocus="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"

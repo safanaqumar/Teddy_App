@@ -2,7 +2,7 @@ package com.example.teddyapp.usersdatabase;
 
 public class Technical{
 
-    public  String Name,gender,email,contactnumber,position,address,username;
+    public  String Name,password, gender,email,contactnumber,position,address,username;
     public Technical()
     {
 
@@ -64,8 +64,17 @@ public class Technical{
         return username;
     }
 
-    public Technical(String name, String gender, String email, String contactnumber, String position, String address, String username) {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Technical(String name,String password, String gender, String email, String contactnumber, String position, String address, String username) {
         this.Name = name;
+        this.password=password;
         this.gender = gender;
         this.email = email;
         this.contactnumber = contactnumber;

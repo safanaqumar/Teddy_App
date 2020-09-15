@@ -69,13 +69,14 @@ public class AddUser extends AppCompatActivity {
 
 
         ArrayAdapter<String> spinadapter1 = new ArrayAdapter<>(AddUser.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.positions));
-        spinadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         UserPosition.setAdapter(spinadapter1);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String USERNAME = UserName.getText().toString();
+
                 final String USEREMAIL = UserEmail.getText().toString();
                 final String USERCONTACT = UserContact.getText().toString();
                 final String USERADDRESS = UserAddress.getText().toString();
@@ -130,6 +131,7 @@ public class AddUser extends AppCompatActivity {
                 {
                     if (check == 1) {
                         Admin adminuser = new Admin(USERNAME,
+                                USERPASS,
                                 USERGENDER,
                                 USEREMAIL,
                                 USERCONTACT,
@@ -157,6 +159,7 @@ public class AddUser extends AppCompatActivity {
 
                     } else if (check == 3) {
                         Compilance compilanceuser = new Compilance(USERNAME,
+                                USERPASS,
                                 USERGENDER,
                                 USEREMAIL,
                                 USERCONTACT,
@@ -183,6 +186,7 @@ public class AddUser extends AppCompatActivity {
                         });
                     } else if (check == 2) {
                         Technical technicaluser = new Technical(USERNAME,
+                                USERPASS,
                                 USERGENDER,
                                 USEREMAIL,
                                 USERCONTACT,

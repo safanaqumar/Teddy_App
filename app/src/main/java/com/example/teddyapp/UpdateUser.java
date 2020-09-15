@@ -25,10 +25,7 @@ import static com.google.firebase.database.FirebaseDatabase.getInstance;
 
 public class UpdateUser extends AppCompatActivity {
 
-    ListView mylistView;
-    DatabaseReference DATABASEREF;
-    ArrayList<String> myArrayList= new ArrayList<>();
-    DatabaseReference Technical;
+
 
 
 
@@ -37,43 +34,6 @@ public class UpdateUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
-        mylistView = findViewById(R.id.listview_id);
-        final ArrayAdapter myArrayAdapter = new ArrayAdapter<String>(UpdateUser.this, android.R.layout.simple_list_item_1, myArrayList);
-        Technical=getInstance().getReference().child("admin");
-        Query query = Technical.orderByChild("name");
-        mylistView.setAdapter(myArrayAdapter);
-        query.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String value = dataSnapshot.getValue(String.class);
-                myArrayList.add(value);
-                myArrayAdapter.notifyDataSetChanged();
-
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                myArrayAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
 
     }
 

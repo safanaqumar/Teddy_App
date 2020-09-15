@@ -2,15 +2,17 @@ package com.example.teddyapp.usersdatabase;
 
 public class Compilance {
 
-    public  String Name,gender,email,contactnumber,position,address,username;
+    public  String Name,password,gender,email,contactnumber,position,address,username;
 
     public Compilance()
     {
 
     }
 
-    public Compilance(String name, String gender, String email, String contactnumber, String position, String address, String username) {
-        Name = name;
+
+    public Compilance(String name, String password,String gender, String email, String contactnumber, String position, String address, String username) {
+        this.Name = name;
+        this.password=password;
         this.gender = gender;
         this.email = email;
         this.contactnumber = contactnumber;
@@ -22,6 +24,14 @@ public class Compilance {
     public String getName() {
         return Name;
     }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     public void setName(String name) {
         Name = name;
