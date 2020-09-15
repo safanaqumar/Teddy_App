@@ -70,8 +70,8 @@ public class login_activity extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String userid= inputemail.getText().toString().toLowerCase();
-                final String password = inputpassword.getText().toString();
+                final String userid= inputemail.getText().toString().toLowerCase().trim();
+                final String password = inputpassword.getText().toString().trim();
                 if (TextUtils.isEmpty(userid)){
                     Toast.makeText(getApplicationContext(),"Enter Username!",Toast.LENGTH_SHORT).show();
                     return;

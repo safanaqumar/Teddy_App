@@ -16,7 +16,7 @@
         android:padding="5dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_margin="5dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/TextLabel"
@@ -68,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+
                 android:id="@+id/qr"
                 android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
                 android:layout_gravity="center_vertical"
@@ -176,7 +177,7 @@
             android:layout_width="match_parent"
             android:id="@+id/user"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp"
             style="@style/TextLabel"
             android:hint="Username"
             >
@@ -192,7 +193,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             style="@style/TextLabel"
             android:hint="Remark"
             >
@@ -212,8 +213,10 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="ADD"
+        android:textColor="@color/white"
+        android:background="@color/black"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"></Button>
+        android:layout_margin="10dp"></Button>
 
 
     <Button
@@ -223,7 +226,9 @@
         android:text="Cancel"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp">
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:layout_margin="10dp">
 
     </Button>
 

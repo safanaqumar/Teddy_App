@@ -156,6 +156,8 @@ android:layout_height="wrap_content">
     android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:text="Generate"
+    android:textColor="@color/white"
+    android:background="@color/black"
 android:layout_marginTop="15dp"
     >
 

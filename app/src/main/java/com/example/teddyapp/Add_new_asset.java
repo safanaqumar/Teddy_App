@@ -109,11 +109,10 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
         typess.add("PRINTER");
 
         ArrayAdapter<String> spinerstatusdaptertype = new ArrayAdapter<>(Add_new_asset.this,android.R.layout.simple_list_item_1,typess);
-
         spinerstatusdaptertype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
                 type.setAdapter(spinerstatusdaptertype);
+
+
       ArrayAdapter<String> spinerstatusdapterlocation = new ArrayAdapter<>(Add_new_asset.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Location));
         spinerstatusdapterlocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Location.setAdapter(spinerstatusdapterlocation);

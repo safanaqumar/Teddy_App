@@ -22,24 +22,44 @@
         <activity android:name=".UpdateUser">
 
         </activity>
-        <activity android:name=".AddUser" />
+        <activity android:name=".QRreader"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Report_of_monitor"
+            android:screenOrientation="portrait"></activity>
+  <activity android:name=".Asset_update_three"
+      android:screenOrientation="portrait"></activity>
+        <activity android:name=".Asset_update_two"
+            android:screenOrientation="portrait">
 
-        <activity android:name=".Asset_update" />
-        <activity android:name=".splash_screen" >
+        </activity>
+        <activity android:name=".Track_asset"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Report"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".AddUser" android:screenOrientation="portrait" />
+
+        <activity android:name=".Asset_update" android:screenOrientation="portrait" />
+        <activity android:name=".splash_screen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add_new_asset">
+        <activity android:name=".Add_new_asset"
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
             android:name=".login_activity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Signup" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Signup"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

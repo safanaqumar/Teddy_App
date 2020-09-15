@@ -208,6 +208,8 @@
         android:layout_height="wrap_content"
         android:text="Update"
         android:layout_alignParentBottom="true"
+        android:background="@color/black"
+        android:textColor="@color/white"
         android:layout_margin="20dp"></Button>
 
 
@@ -216,6 +218,8 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Back"
+        android:background="@color/black"
+        android:textColor="@color/white"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp">
@@ -227,6 +231,8 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Remove"
+        android:background="@color/black"
+        android:textColor="@color/white"
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp">

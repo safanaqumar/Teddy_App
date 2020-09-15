@@ -20,6 +20,7 @@ public class Report extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(Report.this,Report_of_monitor.class);
+                startActivity(intent);
             }
         });
     }
