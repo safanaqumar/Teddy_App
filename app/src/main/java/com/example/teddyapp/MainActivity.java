@@ -36,16 +36,34 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
         update_cv.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(MainActivity.this,Asset_update.class);
-        startActivity(intent);
+        Intent intent3 = new Intent(MainActivity.this,Asset_update.class);
+        startActivity(intent3);
         }
       });
+
+        Track_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this,Track_asset.class);
+                startActivity(intent2);
+            }
+        });
+
+
+        Report_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,Report.class);
+                startActivity(intent1);
+            }
+        });
+
 
         Add_asset_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Add_new_asset.class);
-                startActivity(intent);
+                Intent intent4 = new Intent(MainActivity.this,Add_new_asset.class);
+                startActivity(intent4);
             }
         });
 
@@ -63,8 +81,8 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
         latest_activities_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, UpdateUser.class);
-                startActivity(intent);
+                Intent intent5 = new Intent(MainActivity.this, UpdateUser.class);
+                startActivity(intent5);
             }
         });
         registeruser_cv.setOnClickListener(new View.OnClickListener() {

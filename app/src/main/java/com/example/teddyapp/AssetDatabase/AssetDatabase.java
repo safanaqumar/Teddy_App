@@ -1,7 +1,7 @@
 package com.example.teddyapp.AssetDatabase;
 
 public class AssetDatabase {
-   private String Serial_num, Asset_tag,typeofasset, Description,location, Deprt,statusasset, Remark;
+   public static String Serial_num, Asset_tag,typeofasset, Description,location, Deprt,statusasset, Remark;
 
 
 

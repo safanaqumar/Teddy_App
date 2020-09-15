@@ -27,8 +27,8 @@ private FirebaseAuth firebaseAuth;
 
     private Button registerbtn;
     private ProgressBar progressBar;
-
-    private EditText regname,regemail,regcontactno,regaddress,regusername,regpas,regconpass;
+public static Spinner spinner,spinner1;
+    public static EditText regname,regemail,regcontactno,regaddress,regusername,regpas,regconpass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +41,8 @@ private FirebaseAuth firebaseAuth;
         regusername = (EditText) findViewById(R.id.regusername);
         regpas = (EditText) findViewById(R.id.regpass);
         regconpass = (EditText)findViewById(R.id.regconfirmpass);
-        final Spinner spinner = (Spinner) findViewById(R.id.reggender);
-        final Spinner spinner1= (Spinner) findViewById(R.id.regposition);
+      spinner = (Spinner) findViewById(R.id.reggender);
+    spinner1= (Spinner) findViewById(R.id.regposition);
         progressBar = (ProgressBar) findViewById(R.id.loadingbar);
 
 
