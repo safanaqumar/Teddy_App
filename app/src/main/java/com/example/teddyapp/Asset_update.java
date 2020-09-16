@@ -74,7 +74,7 @@ DatabaseReference reference;
 
                     String assettags = dataSnapshot.child(getUserEnteredlocspinners).child("typeofasset").getValue(String.class);
 
-                    if ( assettags.equals(getEnteredassetTypes)) {
+                    if (assettags.equals(getEnteredassetTypes)) {
                         String getting_tag = dataSnapshot.child(getUserEnteredlocspinners).child("asset_tag").getValue(String.class);
                         Intent intent = new Intent(getApplicationContext(), Asset_update_two.class);
 
