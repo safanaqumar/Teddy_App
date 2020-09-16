@@ -36,10 +36,10 @@ public static TextInputEditText serialno,Assettag,Description,Remark,User;
 private Button Addasset,cancelasset ;
 private Button qrscanner;
 List<String> softtypes = new ArrayList<>( );
-    DatabaseReference AssetsDatabaseReference;;
+  public static   DatabaseReference AssetsDatabaseReference;;
 
 
-DatabaseReference reference;
+// public  static DatabaseReference reference;
     private static final int REQUEST_CAMERA = 1;
 
     int nextid = 0;
@@ -64,7 +64,6 @@ DatabaseReference reference;
         software_Spinner = (Spinner) findViewById(R.id.softwarespinner);
         Addasset = (Button) findViewById(R.id.addasset);
         cancelasset = (Button)findViewById(R.id.cancelasset);
-        AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("assets");
 
 //Getting the username
 //        User.setText(Signup.regusername.getText());
@@ -153,8 +152,7 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
         ArrayAdapter<String> spinerstatusdapterdepartment = new ArrayAdapter<>(Add_new_asset.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Department));
         spinerstatusdapterdepartment.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Department.setAdapter(spinerstatusdapterdepartment);
-
-
+        //reference = FirebaseDatabase.getInstance().getReference("Data");
 
 
         Addasset.setOnClickListener(new View.OnClickListener() {
@@ -172,10 +170,17 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                   String remark = Remark.getText().toString();
                   AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark);
 
-                AssetsDatabaseReference.child(serial_num).setValue(assetDatabase);
-                  reference = FirebaseDatabase.getInstance().getReference("Data");
-                 reference.child(location).setValue(assetDatabase);
-                  reference.child(serial_num).setValue(assetDatabase);
+
+
+                // reference.setValue(assetDatabase);
+                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").push();
+            // DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
+
+                AssetsDatabaseReference.setValue(assetDatabase);
+                //AssetsDatabaseReference.child("assets").getKey();
+                //reference.child(serial_num).setValue(assetDatabase);
+                // Generate a reference to a new location and add some data using push()
+
                 Toast.makeText(Add_new_asset.this,"Added",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Add_new_asset.this,MainActivity.class);
                 startActivity(intent);
