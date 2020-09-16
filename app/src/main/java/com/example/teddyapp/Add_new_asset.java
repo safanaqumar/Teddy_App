@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.teddyapp.AssetDatabase.AssetDatabase;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -168,12 +169,13 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                   String deprt = Department.getSelectedItem().toString();
                   String statusasset= statusspinner.getSelectedItem().toString();
                   String remark = Remark.getText().toString();
-                  AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark);
+                  String reader= location+asset_tag;
+                  AssetDatabase assetDatabase = new AssetDatabase(serial_num,reader,asset_tag,typeofasset,description,location,deprt,statusasset,remark);
 
 
 
                 // reference.setValue(assetDatabase);
-                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").push();
+                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
             // DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
 
                 AssetsDatabaseReference.setValue(assetDatabase);
@@ -181,7 +183,7 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                 //reference.child(serial_num).setValue(assetDatabase);
                 // Generate a reference to a new location and add some data using push()
 
-                Toast.makeText(Add_new_asset.this,"Added",Toast.LENGTH_LONG).show();
+                Toast.makeText(Add_new_asset.this,reader,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Add_new_asset.this,MainActivity.class);
                 startActivity(intent);
 
