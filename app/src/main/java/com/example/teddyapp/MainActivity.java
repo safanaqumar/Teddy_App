@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,10 +22,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent i = getIntent();
+        final String cuid=i.getStringExtra("current_user_id");
+        final String cpos=i.getStringExtra("current_user_position");
+
+
 
 textviewwelcome = (TextView) findViewById(R.id.welcometxt);
 
-      //  textviewwelcome.setText("Welcome Back!" +  );
+       textviewwelcome.setText("Welcome Back!" +  cuid + cpos);
         Add_asset_cv = (CardView) findViewById(R.id.Add_asset_cv);
         update_cv = (CardView) findViewById(R.id.update_cv);
         Track_cv = (CardView) findViewById(R.id.track_cv);
@@ -90,6 +96,17 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddUser.class);
                 startActivity(intent);
+            }
+        });
+
+
+        user_profile_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),UpdateUser.class);
+                i.putExtra("current_user_id",cuid);
+                i.putExtra("current_user_position",cpos);
+                startActivity(i);
             }
         });
 
