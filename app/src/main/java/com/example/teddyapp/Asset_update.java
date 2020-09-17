@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Asset_update extends AppCompatActivity {
 Spinner locspinner, type_up;
 Button confirm_btn;
-DatabaseReference reference;
+public  DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +57,47 @@ DatabaseReference reference;
     }
 
     public void isUser() {
-
+     //   final  String reader1 =
         final String getUserEnteredlocspinners = locspinner.getSelectedItem().toString();
+        final String getEnteredassetTypes = type_up.getSelectedItem().toString();
+        final String concat = getUserEnteredlocspinners.concat(getEnteredassetTypes);
+        reference = FirebaseDatabase.getInstance().getReference("Data");
+       Query checkdlocation = reference.orderByChild("reader").equalTo(concat);
+
+
+        checkdlocation.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              //  if (dataSnapshot.hasChild("asset_tag")) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                 String getting_tag = dataSnapshot1.child("asset_tag").getValue(String.class);
+
+         //String taggg = dataSnapshot.child(concat).child("asset_tag").getValue(String.class);
+                      Toast.makeText(Asset_update.this,"asset",Toast.LENGTH_LONG).show();
+                        // run some code
+                    Intent intent = new Intent(getApplicationContext(), Asset_update_two.class);
+
+                    intent.putExtra("asset_tag",getting_tag);
+
+                    startActivity(intent);
+                }
+
+
+                        //run some code
+
+                   // }
+                ///else {
+                  ////  Toast.makeText(Asset_update.this,"qeree",Toast.LENGTH_LONG).show();
+              //  }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+     /*   final String getUserEnteredlocspinners = locspinner.getSelectedItem().toString();
         final String getEnteredassetTypes = type_up.getSelectedItem().toString();
 
         reference = FirebaseDatabase.getInstance().getReference("Data");
@@ -102,7 +141,7 @@ DatabaseReference reference;
                 Toast.makeText(Asset_update.this,"DB not found",Toast.LENGTH_SHORT).show();
                 finish();
             }
-        });
+        });*/
 
     }
 

@@ -155,7 +155,6 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
         Department.setAdapter(spinerstatusdapterdepartment);
         //reference = FirebaseDatabase.getInstance().getReference("Data");
 
-
         Addasset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,19 +162,19 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                   String asset_tag = Assettag.getText().toString();
                   String typeofasset = type.getSelectedItem().toString();
 
-
                   String description = Description.getText().toString();
                   String location = Location. getSelectedItem().toString();
                   String deprt = Department.getSelectedItem().toString();
                   String statusasset= statusspinner.getSelectedItem().toString();
                   String remark = Remark.getText().toString();
-                  String reader= location+asset_tag;
-                  AssetDatabase assetDatabase = new AssetDatabase(serial_num,reader,asset_tag,typeofasset,description,location,deprt,statusasset,remark);
+                  String reader = location.concat(typeofasset);
+                  AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark,reader);
 
+                //AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").push();
 
 
                 // reference.setValue(assetDatabase);
-                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
             // DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
 
                 AssetsDatabaseReference.setValue(assetDatabase);

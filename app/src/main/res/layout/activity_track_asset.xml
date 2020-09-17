@@ -110,7 +110,7 @@ android:layout_marginTop="2dp"
 
 
     <Button
-        android:id="@+id/cancelasset"
+        android:id="@+id/searchasset"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Search"

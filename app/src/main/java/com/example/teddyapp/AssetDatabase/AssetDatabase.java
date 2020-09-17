@@ -1,12 +1,20 @@
 package com.example.teddyapp.AssetDatabase;
 
 public class AssetDatabase {
-   public static String Serial_num, Asset_tag,typeofasset, Description,location, Deprt,statusasset, Remark;
+   public static String Serial_num, Asset_tag,typeofasset, Description,location, Deprt,statusasset, Remark,Reader;
 
 
 
     public AssetDatabase() {
 
+    }
+
+    public  String getReader() {
+        return Reader;
+    }
+
+    public void setReader(String reader) {
+        this.Reader = reader;
     }
 
     public String getStatusasset() {
@@ -26,7 +34,7 @@ public class AssetDatabase {
         this.location = location;
     }
 
-    public AssetDatabase(String serial_num, String asset_tag, String typeofasset, String description, String location, String deprt, String statusasset, String remark) {
+    public AssetDatabase(String serial_num, String asset_tag, String typeofasset, String description, String location, String deprt, String statusasset, String remark, String reader) {
 
         this.typeofasset = typeofasset;
        this.location = location;
@@ -36,6 +44,7 @@ public class AssetDatabase {
         this.Description = description;
         this.Deprt = deprt;
         this.Remark = remark;
+        this.Reader = reader;
     }
 
     public String getSerial_num() {
