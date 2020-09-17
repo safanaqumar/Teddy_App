@@ -38,6 +38,8 @@ public class login_activity extends AppCompatActivity {
     public int check ;
     Spinner UserPosition;
     public String pass1;
+    public String userid1;
+    public String position1;
 
 
 
@@ -87,8 +89,10 @@ public class login_activity extends AppCompatActivity {
     }
     public void login(View v) {
         final String userid = inputuserid.getText().toString().toLowerCase();
+        userid1=userid;
         final String password = inputpassword.getText().toString();
         final String position = UserPosition.getSelectedItem().toString();
+        position1=position;
         pass1=password;
         if (position.equals("Admin")) {
             check = 1;
@@ -131,7 +135,9 @@ public class login_activity extends AppCompatActivity {
                 String pass= dataSnapshot.child("password").getValue(String.class);
                 if (pass.equals(pass1))
                 {
-                    Intent i = new Intent(login_activity.this,MainActivity.class);
+                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    i.putExtra("current_user_id",userid1);
+                    i.putExtra("current_user_position",position1);
                     startActivity(i);
                 }else {
                 Toast.makeText(getApplicationContext(), "wrong password!", Toast.LENGTH_SHORT).show();

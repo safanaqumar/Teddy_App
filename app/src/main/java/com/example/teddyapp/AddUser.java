@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -39,6 +40,7 @@ public class AddUser extends AppCompatActivity {
     DatabaseReference CompilanceDatabaseReference;
     DatabaseReference UserDatabaseReference;
     FirebaseAuth firebaseAuth;
+    FirebaseUser user;
     public int check ;
 
     @Override
@@ -196,7 +198,7 @@ public class AddUser extends AppCompatActivity {
                         );
 
                         FirebaseDatabase.getInstance().getReference("technical")
-                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .child(FirebaseDatabase.getInstance().getReference().getKey())
                                 .setValue(technicaluser).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
