@@ -54,10 +54,17 @@ public class Track_asset extends AppCompatActivity {
         Department.setAdapter(spinerstatusdapterdepartment);
         Intent intent = getIntent();
 
-        String tagging = intent.getStringExtra("deprt");
-        int tagg= spinerstatusdapterdepartment.getPosition(tagging);
-     Department.setSelection(tagg);
-     //   Department.setSelection(((spinerstatusdapterdepartment)Department.getAdapter()).getPosition(tagging));
+        String depart = intent.getStringExtra("deprt");
+        int dept= spinerstatusdapterdepartment.getPosition(depart);
+     Department.setSelection(dept);
+
+     String tag = intent.getStringExtra("asset_tag");
+     Assettag.setText(tag);
+
+     String typeofasser = intent.getStringExtra("typeofasset");
+     int tos = spinerstatusdaptertype.getPosition(typeofasser);
+     type.setSelection(tos);
+
 
         qrscanner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,14 +108,14 @@ public class Track_asset extends AppCompatActivity {
                     Toast.makeText(Track_asset.this,"Searched",Toast.LENGTH_LONG).show();
                     // run some code
                     Intent intent = new Intent(getApplicationContext(), Track_asset.class);
-String tag =  intent.getStringExtra(getting_tag);
-                   // intent.putExtra("asset_tag",getting_tag);
+/*String tag =  intent.getStringExtra(getting_tag);*/
+                    intent.putExtra("asset_tag",getting_tag);
                     intent.putExtra("typeofasset",getting_type);
                     intent.putExtra("deprt",getting_dept);
 
                     startActivity(intent);
                 }
-
+Toast.makeText(getApplicationContext(),"Not found",Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -116,6 +123,6 @@ String tag =  intent.getStringExtra(getting_tag);
 
             }
         });
-
+onBackPressed();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.teddyapp;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -12,6 +13,8 @@ public class splash_screen extends AppCompatActivity {
     private ImageView splashlogo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         init();

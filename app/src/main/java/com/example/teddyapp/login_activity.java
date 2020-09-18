@@ -36,9 +36,9 @@ public class login_activity extends AppCompatActivity {
     ProgressBar progressBar;
     Button btnlogin;
     public int check;
-    Spinner UserPosition;
+  public static   Spinner UserPosition;
     public String pass1;
-    public String userid1;
+    public static String userid1;
     public String position1;
     public String usertype;
 
@@ -86,7 +86,7 @@ public class login_activity extends AppCompatActivity {
     }
 
     public void login(View v) {
-        final String userid = inputuserid.getText().toString().toLowerCase();
+        final String userid = inputuserid.getText().toString().toLowerCase().trim();
         userid1 = userid;
         final String password = inputpassword.getText().toString();
       /*  final String position = UserPosition.getSelectedItem().toString();

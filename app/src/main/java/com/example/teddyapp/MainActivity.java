@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 textviewwelcome = (TextView) findViewById(R.id.welcometxt);
-        isDisplay();
+      //  isDisplay();
 
 
         Add_asset_cv = (CardView) findViewById(R.id.Add_asset_cv);
@@ -123,7 +123,7 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
 
 
     }
-    public void isDisplay() {
+/*    public void isDisplay() {
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         Query query = UserDatabaseReference.child(uid);
@@ -135,12 +135,6 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
 
                         String username = dataSnapshot.child("name").getValue(String.class);
                        textviewwelcome.setText(username);
-
-
-
-
-
-
 
 
 
@@ -162,7 +156,7 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
             }
         });
 
-    }
+    }*/
 
 
 }
