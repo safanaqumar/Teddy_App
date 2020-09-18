@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Add_new_asset"
     android:background="@color/white">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -240,7 +231,5 @@
         android:layout_margin="10dp">
 
     </Button>
-        </RelativeLayout>
-    </ScrollView>
 
 </RelativeLayout>
