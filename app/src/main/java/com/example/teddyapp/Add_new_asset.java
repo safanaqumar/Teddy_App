@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Camera;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -161,12 +162,43 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                   String serial_num = serialno.getText().toString();
                   String asset_tag = Assettag.getText().toString();
                   String typeofasset = type.getSelectedItem().toString();
-
+                  String username =User.getText().toString();
                   String description = Description.getText().toString();
                   String location = Location. getSelectedItem().toString();
                   String deprt = Department.getSelectedItem().toString();
                   String statusasset= statusspinner.getSelectedItem().toString();
                   String remark = Remark.getText().toString();
+                if (TextUtils.isEmpty(serial_num)) {
+                    Toast.makeText(Add_new_asset.this, " ENTER SERIAL NO", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(asset_tag)) {
+                    Toast.makeText(Add_new_asset.this, " ENTER ASSET TAG", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(typeofasset)) {
+                    Toast.makeText(Add_new_asset.this, " ENTER TYPE OF ASSET", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(description)) {
+                    Toast.makeText(Add_new_asset.this, " ENTER DESCRIPTION", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(location)) {
+                    Toast.makeText(Add_new_asset.this, " ENTER LOCATION", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(remark)) {
+                    Toast.makeText(Add_new_asset.this, " ENTER REMARK", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(username)) {
+                    Toast.makeText(Add_new_asset.this, " ENTER USERNAME", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                   String reader = location.concat(typeofasset);
                   AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark,reader);
 
