@@ -19,11 +19,14 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.Repo;
 
+import org.eazegraph.lib.charts.PieChart;
+
 import java.util.zip.DataFormatException;
 
 public class Report extends AppCompatActivity {
  public Button conbtn;
  public Spinner spinner;
+ PieChart pieChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

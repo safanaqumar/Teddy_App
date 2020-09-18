@@ -36,18 +36,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-        UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
+      // sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+      //  UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
 
-         position= sharedPreferences.getString("user_position", null);
-        Log.i("message",position);
+       //  position= sharedPreferences.getString("user_position", null);
+
 
 
 
 
 
         textviewwelcome = (TextView) findViewById(R.id.welcometxt);
-        isDisplay();
+       // isDisplay();
 
 
         Add_asset_cv = (CardView) findViewById(R.id.Add_asset_cv);
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void isDisplay() {
+   /* public void isDisplay() {
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         Query query = UserDatabaseReference.child(position).child(uid);
@@ -169,9 +169,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"DB not found",Toast.LENGTH_SHORT).show();
                 finish();
             }
-        });
+        });*/
 
     }
 
 
-}
