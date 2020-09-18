@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SharedMemory;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,17 +29,24 @@ public class MainActivity extends AppCompatActivity {
     private  CardView logout_cv,Add_asset_cv,update_cv,Track_cv,Report_cv,registeruser_cv,user_profile_cv,latest_activities_cv;
     private TextView textviewwelcome;
     DatabaseReference UserDatabaseReference;
+    SharedPreferences sharedPreferences;
+    public String position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
 
+         position= sharedPreferences.getString("user_position", null);
+        Log.i("message",position);
 
 
 
-textviewwelcome = (TextView) findViewById(R.id.welcometxt);
+
+
+        textviewwelcome = (TextView) findViewById(R.id.welcometxt);
         isDisplay();
 
 
@@ -52,12 +61,12 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
 
 
         update_cv.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent3 = new Intent(MainActivity.this,Asset_update.class);
-        startActivity(intent3);
-        }
-      });
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(MainActivity.this,Asset_update.class);
+                startActivity(intent3);
+            }
+        });
 
         Track_cv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,15 +135,15 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
     public void isDisplay() {
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
-        Query query = UserDatabaseReference.child(uid);
+        Query query = UserDatabaseReference.child(position).child(uid);
         query.addListenerForSingleValueEvent(new  ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()) {
 
-                        String username = dataSnapshot.child("name").getValue(String.class);
-                       textviewwelcome.setText(username);
+                    String username = dataSnapshot.child("name").getValue(String.class);
+                    textviewwelcome.setText(username);
 
 
 

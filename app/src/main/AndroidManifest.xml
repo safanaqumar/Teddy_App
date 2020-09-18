@@ -13,6 +13,7 @@
         android:value="barcode" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,32 +21,42 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UpdateUser">
+        </activity>
+        <activity
+            android:name=".QRreader"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".QRreader"
-            android:screenOrientation="portrait"></activity>
         <activity android:name=".Report_of_monitor"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
   <activity android:name=".Asset_update_three"
-      android:screenOrientation="portrait"></activity>
+      android:screenOrientation="portrait">
+
+  </activity>
         <activity android:name=".Asset_update_two"
             android:screenOrientation="portrait">
 
         </activity>
         <activity android:name=".Track_asset"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity android:name=".Report"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
 
-        <activity android:name=".AddUser" android:screenOrientation="portrait" />
+        </activity>
 
-        <activity android:name=".Asset_update" android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".AddUser" android:screenOrientation="portrait" >
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
 
+        </activity>
+
+        <activity android:name=".Asset_update" android:screenOrientation="portrait" >
+
+        </activity>
+        <activity android:name=".MainActivity">
 
 
         </activity>
@@ -60,6 +71,11 @@
         <activity android:name=".Signup"
             android:screenOrientation="portrait"/>
         <activity android:name=".splash_screen"   android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>
