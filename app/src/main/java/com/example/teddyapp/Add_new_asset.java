@@ -203,13 +203,13 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                   AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark,reader);
 
                 //AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").push();
+                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data");
 
 
                 // reference.setValue(assetDatabase);
             // DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
 
-                AssetsDatabaseReference.setValue(assetDatabase);
+                AssetsDatabaseReference.child(serial_num).setValue(assetDatabase);
                 //AssetsDatabaseReference.child("assets").getKey();
                 //reference.child(serial_num).setValue(assetDatabase);
                 // Generate a reference to a new location and add some data using push()

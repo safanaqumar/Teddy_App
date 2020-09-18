@@ -215,7 +215,7 @@
         android:layout_marginBottom="67dp"
         android:background="@color/black"
         android:enabled="true"
-        android:text="Register"
+        android:text="Update"
         android:textColor="@color/white"
         app:layout_constraintVertical_bias="0.2" />
 
@@ -232,7 +232,7 @@
         android:layout_marginBottom="67dp"
         android:background="@color/black"
         android:enabled="true"
-        android:text="Reset"
+        android:text="Remove"
         android:textColor="@color/white"
         app:layout_constraintVertical_bias="0.2" />
 

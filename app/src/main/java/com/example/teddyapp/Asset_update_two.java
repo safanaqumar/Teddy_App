@@ -1,51 +1,61 @@
 package com.example.teddyapp;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.provider.SearchRecentSuggestions;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Asset_update_two extends AppCompatActivity {
     DatabaseReference reference;
-    String[] mString;
+  // public String[] mString = new String[]{"1122934","399X12","26543A21","12233XX1","12353XXdd1"};
 ListView listView;
-//String [] name1 = {};
-    ArrayList<String> name = new ArrayList<String>();
-
-ArrayAdapter<String> string_Adapter;
+//String[] name1 = {};
+final List<String> name = new ArrayList();
 TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asset_update_two);
-
-        string_Adapter = new ArrayAdapter<String>(Asset_update_two.this, android.R.layout.simple_list_item_1, name);
         listView = (ListView) findViewById(R.id.listvviewtwo);
+        final Intent intent = getIntent();
+        String tagg = intent.getStringExtra("asset_tag");
+        String months  = tagg;
+        name.add(months);
+
+        //ArrayAdapter String_Adapter= new ArrayAdapter(this,R.layout.asset_data,name);
+        ArrayAdapter stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,name);
+        listView.setAdapter(stringArrayAdapter);
+
 //name1 = new String[]{"asset_tag"};
 
-        //reference = FirebaseDatabase.getInstance().getReference("Data");
 
-        final Intent intent = getIntent();
 
-        final String tagg = intent.getStringExtra("asset_tag");
+//Object obj  = tagg;
+        //int  asaa = String_Adapter.getPosition(tagg);
+      //  String sccd = String_Adapter.getItem(tagg)
+
+         //name.get(asaa);
+
+/*
+listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent1 = new Intent(Asset_update_two.this,Asset_update_three.class);
+        startActivity(intent1);
+    }
+});
+*/
+
 
 
       /* for (int i = 0 ; i < name.size() ; i++){
@@ -59,20 +69,21 @@ TextView textView;
         //textView.setText(tagg);
         //   textView.findViewById(R.id.testing);
 
-        listView.setAdapter(string_Adapter);
+       /// listView.setAdapter(String_Adapter);
 
-        // string_Adapter.notifyDataSetChanged();
+        // String_Adapter.notifyDataSetChanged();
 
         //String
-        name.add(tagg);
+       // /name.add(tagg);
 
-        listView.setOnClickListener(new View.OnClickListener() {
+
+      /*  listView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(Asset_update_two.this,Asset_update_three.class);
           startActivity(intent1);
             }
-        });
+        });*/
         /*reference.addChildEventListener(new ChildEventListener() {
     @Override
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -82,7 +93,7 @@ TextView textView;
 
     @Override
     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        string_Adapter.notifyDataSetChanged();
+        String_Adapter.notifyDataSetChanged();
 
     }
 
@@ -120,10 +131,12 @@ TextView textView;
 
             arrayList.add(taggg);
 
-            string_Adapter.notifyDataSetChanged();
+            String_Adapter.notifyDataSetChanged();
 
 
     }*/
 
     }
+
+
 }
