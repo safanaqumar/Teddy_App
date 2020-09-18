@@ -32,15 +32,15 @@ import java.util.EventListener;
 public class login_activity extends AppCompatActivity {
 
 
-     EditText inputuserid,inputpassword;
-     ProgressBar progressBar;
-     Button btnlogin;
-    public int check ;
+    EditText inputuserid, inputpassword;
+    ProgressBar progressBar;
+    Button btnlogin;
+    public int check;
     Spinner UserPosition;
     public String pass1;
     public String userid1;
     public String position1;
-
+    public String usertype;
 
 
     DatabaseReference AdminDatabaseReference;
@@ -50,36 +50,33 @@ public class login_activity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-    //    getSupportActionBar().hide();
+        //    getSupportActionBar().hide();
         getSupportActionBar().setTitle("Login to Asset Teddy");
 
-        AdminDatabaseReference = FirebaseDatabase.getInstance().getReference("admin");
+
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
-        TechnicalDatabaseReference = FirebaseDatabase.getInstance().getReference("technical");
-        CompilanceDatabaseReference = FirebaseDatabase.getInstance().getReference("compilance");
+
         firebaseAuth = FirebaseAuth.getInstance();
 
 
-
         // auth = FirebaseAuth.getInstance();
-       //if (firebaseAuth.getCurrentUser() != null){
-      //      startActivity(new Intent(login_activity.this,MainActivity.class));
-       //     finish();
-      //  }
+        //if (firebaseAuth.getCurrentUser() != null){
+        //      startActivity(new Intent(login_activity.this,MainActivity.class));
+        //     finish();
+        //  }
         setContentView(R.layout.activity_login);
-        inputuserid = (EditText)findViewById(R.id.username);
+        inputuserid = (EditText) findViewById(R.id.loginemail);
         inputpassword = (EditText) findViewById(R.id.password);
         btnlogin = (Button) findViewById(R.id.login);
         progressBar = (ProgressBar) findViewById(R.id.loading);
-        UserPosition = (Spinner) findViewById(R.id.loginuser_position);
-        ArrayAdapter<String> spinadapter1 = new ArrayAdapter<>(login_activity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.positions));
-        spinadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        UserPosition.setAdapter(spinadapter1);
+      //  UserPosition = (Spinner) findViewById(R.id.loginuser_position);
+      //  ArrayAdapter<String> spinadapter1 = new ArrayAdapter<>(login_activity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.positions));
+      //  spinadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+      //  UserPosition.setAdapter(spinadapter1);
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,20 +84,24 @@ public class login_activity extends AppCompatActivity {
             }
         });
     }
+
     public void login(View v) {
         final String userid = inputuserid.getText().toString().toLowerCase();
-        userid1=userid;
+        userid1 = userid;
         final String password = inputpassword.getText().toString();
-        final String position = UserPosition.getSelectedItem().toString();
-        position1=position;
-        pass1=password;
+      /*  final String position = UserPosition.getSelectedItem().toString();
+        position1 = position;
+        pass1 = password;
         if (position.equals("Admin")) {
             check = 1;
+            usertype = "Admin";
         } else if (position.equals("Technical Support Team")) {
             check = 2;
+            usertype = "Technical Support Team";
         } else if (position.equals("Compilance")) {
             check = 3;
-        }
+            usertype = "Compilance";
+        }*/
         if (TextUtils.isEmpty(userid)) {
             Toast.makeText(getApplicationContext(), "Enter Username!", Toast.LENGTH_SHORT).show();
             return;
@@ -109,56 +110,26 @@ public class login_activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
             return;
         }
+        firebaseAuth.signInWithEmailAndPassword(userid, password)
+                .addOnCompleteListener(login_activity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
 
-               // progressBar.setVisibility(View.VISIBLE);
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
 
-        UserDatabaseReference.child("admin").child(userid).addListenerForSingleValueEvent(valueEventListener);
+                        } else {
 
+                            Toast.makeText(login_activity.this, "email or password incorrect", Toast.LENGTH_SHORT);
 
-        UserDatabaseReference.child("Technical Support Team").child(userid).addListenerForSingleValueEvent(valueEventListener);
-
-        UserDatabaseReference.child("Compilance").child(userid).addListenerForSingleValueEvent(valueEventListener);
-
+                        }
+                    }
+                });
 
 
 
 
 
     }
-
-    ValueEventListener valueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            if (dataSnapshot.exists())
-            {
-                String pass= dataSnapshot.child("password").getValue(String.class);
-                if (pass.equals(pass1))
-                {
-                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                    i.putExtra("current_user_id",userid1);
-                    i.putExtra("current_user_position",position1);
-                    startActivity(i);
-                }else {
-                Toast.makeText(getApplicationContext(), "wrong password!", Toast.LENGTH_SHORT).show();
-
-            }
-
-            }
-            else {
-                Toast.makeText(getApplicationContext(), "record not found", Toast.LENGTH_SHORT).show();
-
-
-            }
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-            Toast.makeText(getApplicationContext(), databaseError.toString(), Toast.LENGTH_SHORT).show();
-
-        }
-    };
-
-
-
 }

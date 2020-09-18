@@ -40,8 +40,13 @@
         <activity android:name=".AddUser" android:screenOrientation="portrait" />
 
         <activity android:name=".Asset_update" android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".MainActivity"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+
 
         </activity>
         <activity android:name=".Add_new_asset"
@@ -55,11 +60,6 @@
         <activity android:name=".Signup"
             android:screenOrientation="portrait"/>
         <activity android:name=".splash_screen"   android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>

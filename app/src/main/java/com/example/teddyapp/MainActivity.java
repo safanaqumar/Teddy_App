@@ -1,36 +1,46 @@
 package com.example.teddyapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SharedMemory;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private  CardView logout_cv,Add_asset_cv,update_cv,Track_cv,Report_cv,registeruser_cv,user_profile_cv,latest_activities_cv;
     private TextView textviewwelcome;
+    DatabaseReference UserDatabaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
 
-        Intent i = getIntent();
-        final String cuid=i.getStringExtra("current_user_id");
-        final String cpos=i.getStringExtra("current_user_position");
 
 
 
 textviewwelcome = (TextView) findViewById(R.id.welcometxt);
+        isDisplay();
 
-       textviewwelcome.setText("Welcome Back!" +  cuid + cpos);
+
         Add_asset_cv = (CardView) findViewById(R.id.Add_asset_cv);
         update_cv = (CardView) findViewById(R.id.update_cv);
         Track_cv = (CardView) findViewById(R.id.track_cv);
@@ -39,6 +49,8 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
         user_profile_cv = (CardView) findViewById(R.id.profile_cv);
         latest_activities_cv = (CardView) findViewById(R.id.latest_actvites_cv);
         logout_cv =(CardView) findViewById(R.id.logout_cv);
+
+
         update_cv.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -104,11 +116,53 @@ textviewwelcome = (TextView) findViewById(R.id.welcometxt);
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),UpdateUser.class);
-                i.putExtra("current_user_id",cuid);
-                i.putExtra("current_user_position",cpos);
+
                 startActivity(i);
             }
         });
 
+
     }
+    public void isDisplay() {
+        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        Query query = UserDatabaseReference.child(uid);
+        query.addListenerForSingleValueEvent(new  ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+
+                        String username = dataSnapshot.child("name").getValue(String.class);
+                       textviewwelcome.setText(username);
+
+
+
+
+
+
+
+
+
+
+                }
+
+
+                else {
+                    Toast.makeText(MainActivity.this,"No data found",Toast.LENGTH_SHORT).show();
+
+
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this,"DB not found",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+    }
+
+
 }
