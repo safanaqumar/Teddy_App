@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompatSideChannelService;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,6 +41,9 @@ public class AddUser extends AppCompatActivity {
     public EditText UserName, UserEmail, UserContact, UserAddress, UserID, UserPass, UserConPass;
     DatabaseReference UserDatabaseReference;
     FirebaseAuth firebaseAuth;
+    public String text;
+    SharedPreferences sharedPreferences;
+
 
     public int check ;
     public String usertype;
@@ -88,6 +92,10 @@ public class AddUser extends AppCompatActivity {
                 final String USERCONPASS = UserConPass.getText().toString();
                 final String USERGENDER = UserGender.getSelectedItem().toString();
                 final String USERPOSITION = UserPosition.getSelectedItem().toString();
+
+                text = String.valueOf(UserPosition.getSelectedItem());
+
+
                 if (USERPOSITION.equals("Admin")) {
                     check = 1;
                     usertype = "Admin";
@@ -98,6 +106,12 @@ public class AddUser extends AppCompatActivity {
                     check = 3;
                     usertype = "Compilance";
                 }
+               sharedPreferences = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("user_position", text);
+                editor.apply();
+
+
 
 
 
