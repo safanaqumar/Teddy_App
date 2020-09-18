@@ -1,6 +1,7 @@
 package com.example.teddyapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -48,6 +49,8 @@ public class login_activity extends AppCompatActivity {
     DatabaseReference CompilanceDatabaseReference;
     DatabaseReference UserDatabaseReference;
     FirebaseAuth firebaseAuth;
+    SharedPreferences sharedPreferences;
+    public String position;
 
 
     @Override
@@ -73,6 +76,8 @@ public class login_activity extends AppCompatActivity {
         inputpassword = (EditText) findViewById(R.id.password);
         btnlogin = (Button) findViewById(R.id.login);
         progressBar = (ProgressBar) findViewById(R.id.loading);
+
+     //   position= sharedPreferences.getString("user_position", "");
       //  UserPosition = (Spinner) findViewById(R.id.loginuser_position);
       //  ArrayAdapter<String> spinadapter1 = new ArrayAdapter<>(login_activity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.positions));
       //  spinadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

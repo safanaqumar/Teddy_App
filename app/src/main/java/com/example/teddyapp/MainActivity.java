@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private  CardView logout_cv,Add_asset_cv,update_cv,Track_cv,Report_cv,registeruser_cv,user_profile_cv,latest_activities_cv;
-    private TextView textviewwelcome;
+    private TextView textviewwelcome , textviewwelcome2;
     DatabaseReference UserDatabaseReference;
     SharedPreferences sharedPreferences;
     public String position;
@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      // sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-      //  UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
+      sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
 
-       //  position= sharedPreferences.getString("user_position", null);
+         position= sharedPreferences.getString("user_position", "");
 
 
 
@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         textviewwelcome = (TextView) findViewById(R.id.welcometxt);
-       // isDisplay();
+
+        textviewwelcome2 = (TextView) findViewById(R.id.welcometxt2);
+        isDisplay();
 
 
         Add_asset_cv = (CardView) findViewById(R.id.Add_asset_cv);
@@ -132,44 +134,36 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-   /* public void isDisplay() {
-        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+    public void isDisplay() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         Query query = UserDatabaseReference.child(position).child(uid);
-        query.addListenerForSingleValueEvent(new  ValueEventListener() {
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()) {
 
                     String username = dataSnapshot.child("name").getValue(String.class);
-                    textviewwelcome.setText(username);
+                   textviewwelcome2.setText(username+position);
 
 
 
-
-
-
-
-
-
-
-                }
-
-
-                else {
-                    Toast.makeText(MainActivity.this,"No data found",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No data found", Toast.LENGTH_SHORT).show();
 
 
                 }
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this,"DB not found",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "DB not found", Toast.LENGTH_SHORT).show();
                 finish();
             }
-        });*/
+        });
+    }
 
     }
 
