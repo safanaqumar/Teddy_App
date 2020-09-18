@@ -19,8 +19,7 @@ public class Asset_update_two extends AppCompatActivity {
   // public String[] mString = new String[]{"1122934","399X12","26543A21","12233XX1","12353XXdd1"};
 ListView listView;
 //String[] name1 = {};
-//final List<String> name = new ArrayList();
-ArrayList name = new ArrayList();
+final List<String> name = new ArrayList();
 TextView textView;
 
     @Override

@@ -3,6 +3,7 @@ package com.example.teddyapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
@@ -41,8 +42,20 @@ public class Asset_update_three extends AppCompatActivity {
         cancelasset = (Button)findViewById(R.id.cancelasset);
 
 
+        ArrayAdapter<String> spinerstatusdaptertype = new ArrayAdapter<>(Asset_update_three.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.type));
+        spinerstatusdaptertype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        type.setAdapter(spinerstatusdaptertype);
 
-//Getting the username
+        ArrayAdapter<String> spinerstatusdapterlocation = new ArrayAdapter<>(Asset_update_three.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Location));
+        spinerstatusdapterlocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Location.setAdapter(spinerstatusdapterlocation);
+
+        ArrayAdapter<String> spinerstatusdapterdepartment = new ArrayAdapter<>(Asset_update_three.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Department));
+        spinerstatusdapterdepartment.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Department.setAdapter(spinerstatusdapterdepartment);
+
+        //Getting the username
+
 
 
 
