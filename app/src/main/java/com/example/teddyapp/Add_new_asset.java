@@ -45,7 +45,6 @@ List<String> softtypes = new ArrayList<>( );
   public String asset_type_name;
   public int check1;
   public String asset_assign_name;
-  public String assetlower;
 
 
     @Override
@@ -219,7 +218,6 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                       check=10;
                       asset_type_name="PRINTER";
                   }
-               //  assetlower= typeofasset.toLowerCase();
 
                   if (statusasset.equals("assign"))
                   {
@@ -241,17 +239,6 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                       check1=1;
                       asset_type_name="dispose";
                   }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -284,27 +271,22 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                     return;
                 }
 
-                if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(Add_new_asset.this, " ENTER USERNAME", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
                   String reader = location.concat(typeofasset);
                   AssetDatabase assetDatabase = new AssetDatabase(serial_num,asset_tag,typeofasset,description,location,deprt,statusasset,remark,reader);
 
                 //AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").child("assets");
+                AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data");
 
 
                 // reference.setValue(assetDatabase);
             // DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
 
-                AssetsDatabaseReference.push().setValue(assetDatabase);
+                AssetsDatabaseReference.child(asset_type_name).child("status").child(asset_type_name).setValue(assetDatabase);
                 //AssetsDatabaseReference.child("assets").getKey();
                 //reference.child(serial_num).setValue(assetDatabase);
                 // Generate a reference to a new location and add some data using push()
 
-
+                Toast.makeText(Add_new_asset.this,reader,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Add_new_asset.this,MainActivity.class);
                 startActivity(intent);
 

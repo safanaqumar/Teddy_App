@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
       //  textviewwelcome = (TextView) findViewById(R.id.welcometxt);
 
-        textviewwelcome2 = (TextView) findViewById(R.id.welcometxt2);
+        textviewwelcome2 = (TextView) findViewById(R.id.welcometxt);
         isDisplay();
 
 

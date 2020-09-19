@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".UpdateUser">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_name"
         android:layout_width="match_parent"
@@ -204,6 +211,7 @@
         />
 
     <Button
+        android:layout_below="@+id/loadingbar"
         android:id="@+id/updateuser_btn"
         android:layout_width="122dp"
         android:layout_height="40dp"
@@ -235,5 +243,7 @@
         android:text="Remove"
         android:textColor="@color/white"
         app:layout_constraintVertical_bias="0.2" />
+    </RelativeLayout>
 
+    </ScrollView>
 </RelativeLayout>

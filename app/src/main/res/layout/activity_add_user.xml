@@ -9,11 +9,11 @@
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="fill_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="fill_parent">
 
 
 
@@ -214,15 +214,16 @@
         />
 
     <Button
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/loadingbar"
         android:id="@+id/user_btn"
         android:layout_width="122dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="start"
-
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="67dp"
+
         android:background="@color/black"
         android:enabled="true"
         android:text="Register"
