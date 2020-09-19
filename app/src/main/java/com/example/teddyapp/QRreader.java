@@ -12,6 +12,8 @@ import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
+import static com.example.teddyapp.Add_new_asset.Assettag;
+
 public class QRreader extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     ZXingScannerView scannerView;
     @Override
@@ -27,7 +29,8 @@ public class QRreader extends AppCompatActivity implements ZXingScannerView.Resu
 
     @Override
     public void handleResult(Result rawResult) {
-        Add_new_asset.Assettag.setText(rawResult.getText());
+        Assettag.setText(rawResult.getText());
+       // Asset_update.assettags.setText(rawResult.getText());
         onBackPressed();
     }
 

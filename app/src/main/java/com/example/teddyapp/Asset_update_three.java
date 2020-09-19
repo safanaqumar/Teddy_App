@@ -32,7 +32,7 @@ public class Asset_update_three extends AppCompatActivity {
     public static Spinner statusspinner, Location, type, Department, software_Spinner;
     public static TextInputEditText serialno, Assettag, Description, Remark, User;
     private Button Addasset, cancelasset;
-    private Button qrscanner;
+    public Button qrscanner;
     List<String> softtypes = new ArrayList<>();
     public static DatabaseReference AssetsDatabaseReference;
     public static String remark1;
@@ -114,7 +114,7 @@ public class Asset_update_three extends AppCompatActivity {
     }
     private boolean isdepartmentchanged() {
         if (!deprt1.equals(Department.getSelectedItem().toString())) {
-            reference.child(type1).child("deprt").setValue(Department.getSelectedItem().toString());
+            reference.child("deprt").setValue(Department.getSelectedItem().toString());
             deprt1 = Department.getSelectedItem().toString();
             return true;
 
@@ -125,7 +125,7 @@ public class Asset_update_three extends AppCompatActivity {
     }
     private boolean islocationchanged(){
         if (!location1.equals(Location.getSelectedItem().toString())) {
-            reference.child(type1).child("location").setValue(Location.getSelectedItem().toString());
+            reference.child("location").setValue(Location.getSelectedItem().toString());
             location1 = Location.getSelectedItem().toString();
             return true;
 
@@ -135,9 +135,10 @@ public class Asset_update_three extends AppCompatActivity {
 
     }
 
-private boolean isstatuschanged(){
+
+    private boolean isstatuschanged(){
     if (!Status1.equals(statusspinner.getSelectedItem().toString())) {
-        reference.child(type1).child("statusasset").setValue(statusspinner.getSelectedItem().toString());
+        reference.child("statusasset").setValue(statusspinner.getSelectedItem().toString());
         Status1 = statusspinner.getSelectedItem().toString();
         return true;
 
@@ -148,7 +149,7 @@ private boolean isstatuschanged(){
 }
     private boolean istypeofasset() {
         if (!type1.equals(type.getSelectedItem().toString())) {
-            reference.child(type1).child("typeofasset").setValue(type.getSelectedItem().toString());
+            reference.child("typeofasset").setValue(type.getSelectedItem().toString());
             type1 = type.getSelectedItem().toString();
             return true;
 
@@ -156,10 +157,10 @@ private boolean isstatuschanged(){
             return false;
         }
     }
-
+String key = reference.getKey();
     private boolean isdescriptionchanged(){
         if (!description1.equals(Description.getText().toString())) {
-            reference.child(type1).child("description").setValue(Description.getText().toString());
+            reference.child(key).child("description").setValue(Description.getText().toString());
             description1 = Description.getText().toString();
             return true;
 
@@ -172,7 +173,7 @@ private boolean isstatuschanged(){
 
     private boolean isserialnochanged() {
         if (!Serial_no1.equals(serialno.getText().toString())) {
-            reference.child(type1).child("serial_num").setValue(serialno.getText().toString());
+            reference.child("serial_num").setValue(serialno.getText().toString());
             Serial_no1 = serialno.getText().toString();
             return true;
 
@@ -183,7 +184,7 @@ private boolean isstatuschanged(){
 
     private boolean isremarkchanged() {
         if (!remark1.equals(Remark.getText().toString())) {
-            reference.child(type1).child("remark").setValue(Remark.getText().toString());
+            reference.child("remark").setValue(Remark.getText().toString());
             remark1 = Remark.getText().toString();
             return true;
 
@@ -196,7 +197,7 @@ private boolean isstatuschanged(){
     private boolean isaseettagchanged() {
 
         if (!assettags1.equals(Assettag.getText().toString())) {
-            reference.child(type1).child("asset_tag").setValue(Assettag.getText().toString());
+            reference.child("asset_tag").setValue(Assettag.getText().toString());
             assettags1 = Assettag.getText().toString();
             return true;
 
@@ -281,5 +282,10 @@ public void data() {
                 }
             });
         }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
-        }
+
+}

@@ -65,7 +65,10 @@ public class login_activity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-
+        if (firebaseAuth.getCurrentUser() != null){
+            startActivity(new Intent(login_activity.this,MainActivity.class));
+            finish();
+        }
         // auth = FirebaseAuth.getInstance();
         //if (firebaseAuth.getCurrentUser() != null){
         //      startActivity(new Intent(login_activity.this,MainActivity.class));
@@ -91,9 +94,10 @@ public class login_activity extends AppCompatActivity {
     }
 
     public void login(View v) {
-        final String userid = inputuserid.getText().toString().toLowerCase().trim();
+        final  String userid = inputuserid.getText().toString().toLowerCase().trim();
         userid1 = userid;
         final String password = inputpassword.getText().toString();
+
       /*  final String position = UserPosition.getSelectedItem().toString();
         position1 = position;
         pass1 = password;
@@ -115,27 +119,34 @@ public class login_activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
             return;
         }
+        progressBar.setVisibility(View.VISIBLE);
         firebaseAuth.signInWithEmailAndPassword(userid, password)
                 .addOnCompleteListener(login_activity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-
+                        if (!task.isSuccessful()) {
+                            progressBar.setVisibility(View.GONE);
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            Toast.makeText(login_activity.this, "success", Toast.LENGTH_SHORT);
+                            Toast.makeText(login_activity.this, "Authentication failed", Toast.LENGTH_SHORT);
+                            if (password.length()< 6){
+                                inputpassword.setError(getString(R.string.Minpassword));
+                            } else {
+                                Toast.makeText(login_activity.this,"Sucess!",Toast.LENGTH_LONG).show();
 
+                            }
 
                         } else {
+
+                            Intent intent = new Intent(login_activity.this,MainActivity.class);
+                            intent.putExtra("Welcome username",userid1);
+                            startActivity(intent);
+                            finish();
 
                             Toast.makeText(login_activity.this, "email or password incorrect", Toast.LENGTH_SHORT);
 
                         }
                     }
                 });
-
-
-
-
 
     }
 }

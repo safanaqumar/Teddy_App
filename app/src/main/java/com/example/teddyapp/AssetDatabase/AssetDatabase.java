@@ -7,6 +7,7 @@ public class AssetDatabase {
 
     public AssetDatabase() {
 
+
     }
 
     public  String getReader() {
@@ -45,6 +46,7 @@ public class AssetDatabase {
         this.Deprt = deprt;
         this.Remark = remark;
         this.Reader = reader;
+
     }
 
     public String getSerial_num() {

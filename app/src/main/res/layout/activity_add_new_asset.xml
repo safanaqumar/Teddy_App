@@ -6,8 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Add_new_asset"
     android:background="@color/white">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <LinearLayout
+        android:id="@+id/labledd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -57,7 +65,7 @@
                 <com.google.android.material.textfield.TextInputEditText
 
                     android:id="@+id/AssetTag"
-
+                    android:paddingBottom="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
 
@@ -209,6 +217,7 @@
     </LinearLayout>
 
     <Button
+        android:layout_below="@+id/labledd"
         android:id="@+id/addasset"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -231,5 +240,6 @@
         android:layout_margin="10dp">
 
     </Button>
-
+    </RelativeLayout>
+</ScrollView>
 </RelativeLayout>

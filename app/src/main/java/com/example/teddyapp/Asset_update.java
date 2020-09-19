@@ -29,6 +29,7 @@ public class Asset_update extends AppCompatActivity  {
     Button confirm_btn;
     DatabaseReference reference;
     public static String Serial_no;
+ public    static String  assettags;
     List<String> assestsList = new ArrayList<>();
 
 
@@ -82,7 +83,7 @@ public class Asset_update extends AppCompatActivity  {
                 if (dataSnapshot.exists()) {
 
                     for (DataSnapshot datas : dataSnapshot.getChildren()) {
-                        String assettags = datas.child("asset_tag").getValue(String.class);
+                         assettags = datas.child("asset_tag").getValue(String.class);
                         Serial_no = datas.child("serial_num").getValue(String.class);
 
 

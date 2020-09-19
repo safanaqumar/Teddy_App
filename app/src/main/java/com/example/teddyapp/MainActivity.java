@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private  CardView logout_cv,Add_asset_cv,update_cv,Track_cv,Report_cv,registeruser_cv,user_profile_cv,latest_activities_cv;
-    private TextView textviewwelcome , textviewwelcome2;
+    public static TextView textviewwelcome , textviewwelcome2;
     DatabaseReference UserDatabaseReference;
     SharedPreferences sharedPreferences;
-    public String position;
+    public static String position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-      //  textviewwelcome = (TextView) findViewById(R.id.welcometxt);
+       textviewwelcome = (TextView) findViewById(R.id.welcometxt);
 
-        textviewwelcome2 = (TextView) findViewById(R.id.welcometxt);
+       // textviewwelcome2 = (TextView) findViewById(R.id.welcometxt);
         isDisplay();
 
 
@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         user_profile_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,12 +144,12 @@ public class MainActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
 
                     String username = dataSnapshot.child("name").getValue(String.class);
-                   textviewwelcome2.setText(username+position);
+                   textviewwelcome.setText(username+position);
 
 
 
                 } else {
-                    Toast.makeText(MainActivity.this, "No data found", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(MainActivity.this, "No data found", Toast.LENGTH_SHORT).show();
 
 
                 }

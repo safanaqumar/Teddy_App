@@ -27,6 +27,7 @@ public class Track_asset extends AppCompatActivity {
     private Spinner statusspinner,Location,type,Department, software_Spinner;
     TextInputEditText Assettag;
     Button qrscanner, searchasset;
+   static String getting_tag,getting_type,getting_dept;
     private static final int REQUEST_CAMERA = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,21 +101,24 @@ public class Track_asset extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    String getting_tag = dataSnapshot1.child("asset_tag").getValue(String.class);
-                    String getting_type = dataSnapshot1.child("typeofasset").getValue(String.class);
-                    String getting_dept = dataSnapshot1.child("deprt").getValue(String.class);
+                     getting_tag = dataSnapshot1.child("asset_tag").getValue(String.class);
+                     getting_type = dataSnapshot1.child("typeofasset").getValue(String.class);
+                     getting_dept = dataSnapshot1.child("deprt").getValue(String.class);
 
                     //String taggg = dataSnapshot.child(concat).child("asset_tag").getValue(String.class);
                     Toast.makeText(Track_asset.this,"Searched",Toast.LENGTH_LONG).show();
                     // run some code
-                    Intent intent = new Intent(getApplicationContext(), Track_asset.class);
 /*String tag =  intent.getStringExtra(getting_tag);*/
-                    intent.putExtra("asset_tag",getting_tag);
-                    intent.putExtra("typeofasset",getting_type);
-                    intent.putExtra("deprt",getting_dept);
 
-                    startActivity(intent);
+
+
                 }
+                Intent intent = new Intent(getApplicationContext(), Track_asset.class);
+
+                intent.putExtra("asset_tag",getting_tag);
+                intent.putExtra("typeofasset",getting_type);
+                intent.putExtra("deprt",getting_dept);
+                startActivity(intent);
 Toast.makeText(getApplicationContext(),"Not found",Toast.LENGTH_LONG).show();
             }
 
@@ -123,6 +127,11 @@ Toast.makeText(getApplicationContext(),"Not found",Toast.LENGTH_LONG).show();
 
             }
         });
-onBackPressed();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
