@@ -39,12 +39,12 @@ private Button Addasset,cancelasset ;
 private Button qrscanner;
 List<String> softtypes = new ArrayList<>( );
   public static   DatabaseReference AssetsDatabaseReference;;
-
-
-// public  static DatabaseReference reference;
-    private static final int REQUEST_CAMERA = 1;
-
-    int nextid = 0;
+  private static final int REQUEST_CAMERA = 1;
+  int nextid = 0;
+  public int check;
+  public String asset_type_name;
+  public int check1;
+  public String asset_assign_name;
 
 
     @Override
@@ -98,7 +98,7 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
         spinerstatusdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         statusspinner.setAdapter(spinerstatusdapter);
         final List<String> typess = new  ArrayList<>();
-        typess.add("Monitor");
+        typess.add("MONITOR");
         typess.add("CPU");
         typess.add("KEYBOARD");
         typess.add("HEADSET");
@@ -168,6 +168,94 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                   String deprt = Department.getSelectedItem().toString();
                   String statusasset= statusspinner.getSelectedItem().toString();
                   String remark = Remark.getText().toString();
+                  if(typeofasset.equals("MONITOR"))
+                  {
+                      check=1;
+                      asset_type_name="MONITOR";
+                  }
+                  else if(typeofasset.equals("CPU"))
+                {
+                    check=2;
+                    asset_type_name="CPU";
+                }
+                else if(typeofasset.equals("MOUSE"))
+                {
+                    check=3;
+                    asset_type_name="MOUSE";
+                }
+                else if(typeofasset.equals("KEYBOARD"))
+                {
+                    check=4;
+                    asset_type_name="KEYBOARD";
+                }
+                else if(typeofasset.equals("PHONE"))
+                {
+                    check=5;
+                    asset_type_name="PHONE";
+                }
+                else if(typeofasset.equals("HEADSET"))
+                {
+                    check=6;
+                    asset_type_name="HEADSET";
+                }
+                else if(typeofasset.equals("PROJECTOR"))
+                {
+                    check=7;
+                    asset_type_name="PROJECTOR";
+                }
+                else if(typeofasset.equals("TV"))
+                {
+                    check=8;
+                    asset_type_name="TV";
+                }
+                else if(typeofasset.equals("MODEM"))
+                {
+                    check=9;
+                    asset_type_name="MODEM";
+                }
+                  else if(typeofasset.equals("PRINTER"))
+                  {
+                      check=10;
+                      asset_type_name="PRINTER";
+                  }
+
+                  if (statusasset.equals("assign"))
+                  {
+                      check1=1;
+                      asset_type_name="assign";
+
+                  }else if (statusasset.equals("unassign"))
+                  {
+                      check1=1;
+                      asset_type_name="unassign";
+                  }
+                  else if (statusasset.equals("faulty"))
+                  {
+                      check1=1;
+                      asset_type_name="faulty";
+                  }
+                  else if (statusasset.equals("dispose"))
+                  {
+                      check1=1;
+                      asset_type_name="dispose";
+                  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 if (TextUtils.isEmpty(serial_num)) {
                     Toast.makeText(Add_new_asset.this, " ENTER SERIAL NO", Toast.LENGTH_SHORT).show();
                     return;
@@ -209,7 +297,7 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                 // reference.setValue(assetDatabase);
             // DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
 
-                AssetsDatabaseReference.child(serial_num).setValue(assetDatabase);
+                AssetsDatabaseReference.child(asset_type_name).child("status").child(asset_type_name).setValue(assetDatabase);
                 //AssetsDatabaseReference.child("assets").getKey();
                 //reference.child(serial_num).setValue(assetDatabase);
                 // Generate a reference to a new location and add some data using push()
