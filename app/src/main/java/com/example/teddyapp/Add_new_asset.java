@@ -297,7 +297,7 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                 // reference.setValue(assetDatabase);
             // DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
 
-                AssetsDatabaseReference.child(asset_type_name).child("status").child(asset_type_name).setValue(assetDatabase);
+                AssetsDatabaseReference.child(asset_type_name).push().setValue(assetDatabase);
                 //AssetsDatabaseReference.child("assets").getKey();
                 //reference.child(serial_num).setValue(assetDatabase);
                 // Generate a reference to a new location and add some data using push()

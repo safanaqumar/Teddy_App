@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Add_new_asset"
     android:background="@color/white">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -207,6 +211,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+</ScrollView>
 
     <Button
         android:id="@+id/addasset"
@@ -216,7 +221,9 @@
         android:textColor="@color/white"
         android:background="@color/black"
         android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"></Button>
+        android:layout_margin="10dp">
+
+    </Button>
 
 
     <Button

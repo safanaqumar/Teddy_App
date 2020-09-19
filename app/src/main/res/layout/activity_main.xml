@@ -12,18 +12,23 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:src="@drawable/app_bar_cropped_1"
-            android:layout_marginTop="10dp">
+            android:layout_width="72dp"
+            android:layout_height="82dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo">
+
         </ImageView>
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal">
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/welcometxt"
@@ -101,7 +106,8 @@
                         android:layout_height="64dp"
 
                         android:padding="6dp"
-                        android:src="@drawable/add" />
+                        android:src="@drawable/ic_baseline_add_circle_outline_24"
+                       />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -134,7 +140,8 @@
                         android:layout_height="64dp"
                         android:layout_marginTop="5dp"
                         android:padding="6dp"
-                        android:src="@drawable/repeat" />
+                        android:src="@drawable/ic_baseline_update_24"
+                       />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -178,7 +185,8 @@
                         android:layout_height="64dp"
 
                         android:padding="5dp"
-                        android:src="@drawable/research" />
+                        android:src="@drawable/ic_baseline_search_24"
+                      />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -209,7 +217,8 @@
                         android:layout_height="64dp"
 
                         android:padding="4dp"
-                        android:src="@drawable/edit_pie_chart_report" />
+                        android:src="@drawable/ic_baseline_view_list_24"
+                      />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -250,7 +259,8 @@
                         android:layout_height="64dp"
 
                         android:padding="5dp"
-                        android:src="@drawable/add_user" />
+                        android:src="@drawable/ic_baseline_person_add_24"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -282,7 +292,8 @@
                         android:layout_height="64dp"
 
                         android:padding="5dp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/ic_baseline_person_24"
+                      />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -323,7 +334,8 @@
                         android:layout_height="64dp"
 
                         android:padding="5dp"
-                        android:src="@drawable/petition" />
+                        android:src="@drawable/ic_baseline_view_list_24"
+                       />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -356,7 +368,8 @@
                         android:layout_height="64dp"
 
                         android:padding="6dp"
-                        android:src="@drawable/exit_2" />
+                        android:src="@drawable/ic_baseline_close_24"
+                       />
 
                     <TextView
                         android:layout_width="wrap_content"
