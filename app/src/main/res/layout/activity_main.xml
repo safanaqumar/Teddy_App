@@ -8,6 +8,13 @@
     android:orientation="vertical"
 
     tools:context=".MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -41,29 +48,8 @@
         android:layout_marginLeft="66dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:gravity="right"
-        android:text="Welcome Back!"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:textStyle="normal">
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/welcometxt2"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_above="@+id/linearlayou1"
-        android:layout_below="@+id/app_bar"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="6dp"
-        android:gravity="left"
+        android:layout_centerInParent="true"
+        android:gravity="center"
         android:text="Welcome Back!"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -113,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-
+android:gravity="center"
                         android:text="Add New Asset"
                         android:textStyle="bold" />
 
@@ -384,4 +370,6 @@
 
         </LinearLayout>
     </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

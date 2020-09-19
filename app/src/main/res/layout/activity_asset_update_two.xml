@@ -5,20 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView android:id="@+id/testing"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        >
 
-    </TextView>
     <ListView
          android:id="@+id/listvviewtwo"
-android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
     </ListView>
-
 
 
 </RelativeLayout>

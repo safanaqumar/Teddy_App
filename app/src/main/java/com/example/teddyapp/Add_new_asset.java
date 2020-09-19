@@ -245,17 +245,6 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
                 if (TextUtils.isEmpty(serial_num)) {
                     Toast.makeText(Add_new_asset.this, " ENTER SERIAL NO", Toast.LENGTH_SHORT).show();
                     return;
@@ -279,11 +268,6 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
 
                 if (TextUtils.isEmpty(remark)) {
                     Toast.makeText(Add_new_asset.this, " ENTER REMARK", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(Add_new_asset.this, " ENTER USERNAME", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
