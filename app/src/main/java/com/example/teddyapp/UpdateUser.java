@@ -37,7 +37,7 @@ import static com.google.firebase.database.FirebaseDatabase.getInstance;
 public class UpdateUser extends AppCompatActivity {
 
 
-    public Button registerButton;
+    public Button updateButton;
     public ProgressBar progressBar;
     public Spinner UserGender, UserPosition;
     public EditText UserName, UserEmail, UserContact, UserAddress, UserID, UserPass, UserConPass;
@@ -46,15 +46,17 @@ public class UpdateUser extends AppCompatActivity {
     public String position;
     public int genderposition;
     public int designationposition;
+    public String name;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+   public String uid = user.getUid();
 
 
-    DatabaseReference AdminDatabaseReference;
-    DatabaseReference TechnicalDatabaseReference;
-    DatabaseReference CompilanceDatabaseReference;
+
     DatabaseReference UserDatabaseReference;
-   // DatabaseReference refernce;
+
     FirebaseAuth firebaseAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
+    String updateusername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +79,7 @@ public class UpdateUser extends AppCompatActivity {
         UserGender = (Spinner) findViewById(R.id.updateuser_gender);
         UserPosition = (Spinner) findViewById(R.id.updateuser_position);
         progressBar = (ProgressBar) findViewById(R.id.loadingbar);
-        registerButton = (Button) findViewById(R.id.updateuser_btn);
+        updateButton = (Button) findViewById(R.id.updateuser_btn);
 
         showuserdata();
 
@@ -85,9 +87,12 @@ public class UpdateUser extends AppCompatActivity {
 
 
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                updateusername= UserName.getText().toString();
+                updateData();
+
 
 
 
@@ -98,8 +103,8 @@ public class UpdateUser extends AppCompatActivity {
 
           public void showuserdata() {
 
-              FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-              String uid = user.getUid();
+
+
               Query query = UserDatabaseReference.child(position).child(uid);
               query.addListenerForSingleValueEvent(new ValueEventListener() {
                   @Override
@@ -107,7 +112,7 @@ public class UpdateUser extends AppCompatActivity {
 
                       if (dataSnapshot.exists()) {
 
-                          String name = dataSnapshot.child("name").getValue(String.class);
+                          name = dataSnapshot.child("name").getValue(String.class);
                           String gender = dataSnapshot.child("gender").getValue(String.class);
                           String email = dataSnapshot.child("email").getValue(String.class);
                           String contact = dataSnapshot.child("contactnumber").getValue(String.class);
@@ -173,5 +178,29 @@ public class UpdateUser extends AppCompatActivity {
                   }
               });
             }
+            public  void updateData()
+            {
+                if (isUserNameChanged() )
+                {
+                    Toast.makeText(UpdateUser.this, "Updated", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(UpdateUser.this, "Data is same and cannot be changed", Toast.LENGTH_LONG).show();
+                }
+            }
+            private boolean isUserNameChanged()
+            {
+               if(!name.equals(updateusername))
+               {
+           UserDatabaseReference.child(position).child(uid).child("name").setValue(UserName.getText().toString());
+           return true;
+               }else
+               {
+                   return false;
+               }
+            }
 
-    }
+
+
+}
