@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +29,8 @@ import java.util.zip.DataFormatException;
 
 public class Report extends AppCompatActivity {
     Button generate,monitor, cpu,mouse,keyboard,phone,headset,projector,tv,modem,printer;
-    public String assetType;
+    public String assetType , lowercaseAssetType;
+    DatabaseReference assetDatabaseReference;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,21 +210,51 @@ public class Report extends AppCompatActivity {
                 phone.setEnabled(false);
                 headset.setEnabled(false);
                 projector.setEnabled(false);
-                tv.setEnabled(false);
-                modem.setEnabled(false);
             }
         });
+      //  lowercaseAssetType= assetType.toLowerCase();
         generate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isData();
 
             }
         });
 
+    }
+    public void isData()
+    {
+        assetDatabaseReference= FirebaseDatabase.getInstance().getReference("Data").child("assets");
+        Query typeofasset= assetDatabaseReference.orderByChild("typeofasset").equalTo(assetType);
+        typeofasset.addListenerForSingleValueEvent(new  ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    for(DataSnapshot datas: dataSnapshot.getChildren()){
+                        String status = datas.child("statusasset").getValue(String.class);
 
 
+                    }
+                    Intent intent = new Intent(getApplicationContext(), Report_of_monitor.class);
+                    startActivity(intent);
+
+                }
 
 
+                else {
+                    Toast.makeText(Report.this,"No data found",Toast.LENGTH_SHORT).show();
+                    finish();
+
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Report.this,"DB not found",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
 
     }
 

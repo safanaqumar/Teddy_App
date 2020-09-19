@@ -84,26 +84,6 @@ DatabaseReference reference;
                     Intent intent = new Intent(getApplicationContext(), Asset_update_two.class);
                     startActivity(intent);
 
-
-
-
-
-
-                // Log.i("messagee",assettags);
-
-                //    if (assettags.equals(getEnteredassetTypes)) {
-                    //    String getting_tag = dataSnapshot.child(getUserEnteredlocspinners).child("asset_tag").getValue(String.class);
-                   //     Intent intent = new Intent(getApplicationContext(), Asset_update_two.class);
-
-                    //    intent.putExtra("asset_tag", getting_tag);
-
-        //    startActivity(intent);
-
-                //    } else
-                 //   {
-                    //  Toast.makeText(Asset_update.this,assettags,Toast.LENGTH_SHORT).show();
-                    //    finish();
-                 //   }
                     }
 
 

@@ -37,7 +37,7 @@ import static com.google.firebase.database.FirebaseDatabase.getInstance;
 public class UpdateUser extends AppCompatActivity {
 
 
-    public Button updateButton;
+    public Button updateButton,removeButton;
     public ProgressBar progressBar;
     public Spinner UserGender, UserPosition;
     public EditText UserName, UserEmail, UserContact, UserAddress, UserID, UserPass, UserConPass;
@@ -65,6 +65,7 @@ public class UpdateUser extends AppCompatActivity {
         sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
 
+
         position= sharedPreferences.getString("user_position", "");
        // UserDatabaseReference=FirebaseDatabase.getInstance().getReference("users");
       //  Toast.makeText(getApplicationContext(),position,Toast.LENGTH_SHORT).show();
@@ -80,6 +81,13 @@ public class UpdateUser extends AppCompatActivity {
         UserPosition = (Spinner) findViewById(R.id.updateuser_position);
         progressBar = (ProgressBar) findViewById(R.id.loadingbar);
         updateButton = (Button) findViewById(R.id.updateuser_btn);
+        removeButton=(Button) findViewById(R.id.updateuser_btn3);
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"removed",Toast.LENGTH_LONG).show();
+            }
+        });
 
         showuserdata();
 
