@@ -253,6 +253,7 @@ public static   FirebaseAuth auth;
 
             //String blah = val.concat(val2);
             // String  TOTAL = blah.concat(selectedval);
+
             Query data = reference.orderByChild("asset_tag").equalTo(itemval);
             data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override

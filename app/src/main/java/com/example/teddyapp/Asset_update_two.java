@@ -57,7 +57,7 @@ public class Asset_update_two extends AppCompatActivity {
         listView.setAdapter(stringArrayAdapter);
 
 //listView.getItemAtPosition(1);
-        stringArrayAdapter.notifyDataSetChanged();
+       stringArrayAdapter.notifyDataSetChanged();
 
 
 
@@ -68,7 +68,8 @@ listView.setOnItemClickListener(new ListView.OnItemClickListener() {
 
         //itemval = (String) listView.getItemAtPosition(position);
 itemval = parent.getAdapter().getItem(position).toString();
-        Log.i("","" +itemval);
+
+// Log.i("","" +itemval);
       //  listView.getItemAtPosition(1);
         Intent intent1= new Intent(Asset_update_two.this,Asset_update_three.class);
         startActivity(intent1);
