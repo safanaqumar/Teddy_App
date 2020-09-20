@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
        name= sharedPreferences.getString("user_name", "");
         position= sharedPreferences.getString("user_position", "");
-        textviewwelcome.setText(name);
+        textviewwelcome.setText(name+position);
 
 
 
@@ -146,8 +146,7 @@ public class MainActivity extends AppCompatActivity {
         latest_activities_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent5 = new Intent(MainActivity.this, UpdateUser.class);
-                startActivity(intent5);
+
             }
         });
         registeruser_cv.setOnClickListener(new View.OnClickListener() {

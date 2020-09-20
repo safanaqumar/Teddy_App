@@ -243,8 +243,11 @@ public class Report extends AppCompatActivity {
 
 
                 else {
-                    Toast.makeText(Report.this,"No data found",Toast.LENGTH_SHORT).show();
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), Report_of_monitor.class);
+                    startActivity(intent);
+
+                    //   Toast.makeText(Report.this,"No data found",Toast.LENGTH_SHORT).show();
+                  //  finish();
 
                 }
 

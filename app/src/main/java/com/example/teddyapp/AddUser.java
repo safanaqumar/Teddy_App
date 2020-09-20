@@ -98,11 +98,6 @@ public class AddUser extends AppCompatActivity {
                     check = 3;
                     usertype = "Compilance";
                 }
-                SharedPreferences sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-                sharedPreferences.edit().putString("user_position", usertype).apply();
-
-                SharedPreferences sharedPreferences1= getApplicationContext().getSharedPreferences("MyPrefs", MODE_PRIVATE);
-                sharedPreferences1.edit().putString("user_position", usertype).apply();
 
 
 

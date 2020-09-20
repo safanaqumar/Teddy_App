@@ -62,13 +62,15 @@ public class UpdateUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
+
         sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
-
-
         position= sharedPreferences.getString("user_position", "");
+
+
+      //  position= sharedPreferences.getString("user_position", "");
        // UserDatabaseReference=FirebaseDatabase.getInstance().getReference("users");
-      //  Toast.makeText(getApplicationContext(),position,Toast.LENGTH_SHORT).show();
+      // Toast.makeText(getApplicationContext(),position,Toast.LENGTH_SHORT).show();
 
         UserName = (EditText) findViewById(R.id.updateusername);
         UserEmail = (EditText) findViewById(R.id.updateuser_email);
@@ -113,7 +115,7 @@ public class UpdateUser extends AppCompatActivity {
 
 
 
-              Query query = UserDatabaseReference.child(position).child(uid);
+              Query query = UserDatabaseReference.child(uid);
               query.addListenerForSingleValueEvent(new ValueEventListener() {
                   @Override
                   public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
