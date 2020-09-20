@@ -72,6 +72,28 @@ public class MainActivity extends AppCompatActivity {
         {
               registeruser_cv.setBackgroundColor(Color.LTGRAY);
               registeruser_cv.setEnabled(false);
+            user_profile_cv.setBackgroundColor(Color.LTGRAY);
+            user_profile_cv.setEnabled(false);
+            latest_activities_cv.setBackgroundColor(Color.LTGRAY);
+            latest_activities_cv.setEnabled(false);
+            Add_asset_cv.setBackgroundColor(Color.LTGRAY);
+            Add_asset_cv.setEnabled(false);
+            update_cv.setBackgroundColor(Color.LTGRAY);
+            update_cv.setEnabled(false);
+
+
+        }else if (position.equals("Technical Support Team"))
+        {
+
+            registeruser_cv.setBackgroundColor(Color.LTGRAY);
+            registeruser_cv.setEnabled(false);
+            user_profile_cv.setBackgroundColor(Color.LTGRAY);
+            user_profile_cv.setEnabled(false);
+            latest_activities_cv.setBackgroundColor(Color.LTGRAY);
+            latest_activities_cv.setEnabled(false);
+            Report_cv.setBackgroundColor(Color.LTGRAY);
+            Report_cv.setEnabled(false);
+
         }
 
 

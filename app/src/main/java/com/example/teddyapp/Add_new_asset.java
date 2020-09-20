@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Camera;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.example.teddyapp.AssetDatabase.AssetDatabase;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +39,12 @@ public class Add_new_asset extends AppCompatActivity  {
 private Spinner statusspinner,Location,type,Department, software_Spinner;
 public static TextInputEditText serialno,Assettag,Description,Remark,User;
 private Button Addasset,cancelasset ;
+    DatabaseReference UserDatabaseReference;
+    public String childuser;
 private Button qrscanner;
+    SharedPreferences sharedPreferences;
+    public String name;
+
 List<String> softtypes = new ArrayList<>( );
   public static   DatabaseReference AssetsDatabaseReference;;
 
@@ -67,7 +74,13 @@ List<String> softtypes = new ArrayList<>( );
         software_Spinner = (Spinner) findViewById(R.id.softwarespinner);
         Addasset = (Button) findViewById(R.id.addasset);
         cancelasset = (Button)findViewById(R.id.cancelasset);
-        User.setText(userid1);
+        UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
+
+        sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        name= sharedPreferences.getString("user_name", "");
+         User.setText(name);
+         childuser= User.getText().toString();
+
 
 
 //Getting the username
@@ -197,6 +210,8 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
                     Toast.makeText(Add_new_asset.this, " ENTER REMARK", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
 
 
                   String reader = location.concat(typeofasset);
@@ -205,10 +220,11 @@ cancelasset.setOnClickListener(new View.OnClickListener() {
 
                 //AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 AssetsDatabaseReference = FirebaseDatabase.getInstance().getReference("Data").push();
+                UserDatabaseReference.child(uid).child("Data").child("assets").push().setValue(assetDatabase);
 
 
                 // reference.setValue(assetDatabase);
-            // DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
+            DatabaseReference ref = AssetsDatabaseReference.child("assets").push();
 
                 AssetsDatabaseReference.setValue(assetDatabase);
                 //AssetsDatabaseReference.child("assets").getKey();

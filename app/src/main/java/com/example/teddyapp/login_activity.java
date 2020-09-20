@@ -115,11 +115,9 @@ public class login_activity extends AppCompatActivity {
                     for (DataSnapshot datas : dataSnapshot.getChildren()) {
                          username = datas.child("name").getValue(String.class);
                         position  = datas.child("position").getValue(String.class);
-                        Toast.makeText(login_activity.this, username, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(login_activity.this, position, Toast.LENGTH_SHORT).show();
-                        SharedPreferences sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-                        sharedPreferences.edit().putString("user_name", username).apply();
-                        sharedPreferences.edit().putString("user_position", position).apply();
+                         SharedPreferences sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+                         sharedPreferences.edit().putString("user_name", username).apply();
+                         sharedPreferences.edit().putString("user_position", position).apply();
 
 
 //
