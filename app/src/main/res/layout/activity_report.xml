@@ -24,7 +24,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button_monitor"
+            android:id="@+id/monitor"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -193,7 +193,7 @@
 
 </TextView>
 <Button
-    android:id="@+id/conbtn"
+    android:id="@+id/generate"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:text="Generate"

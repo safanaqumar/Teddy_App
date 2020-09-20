@@ -85,6 +85,7 @@ public class Asset_update extends AppCompatActivity  {
                     for (DataSnapshot datas : dataSnapshot.getChildren()) {
                          assettags = datas.child("asset_tag").getValue(String.class);
                         Serial_no = datas.child("serial_num").getValue(String.class);
+                        Toast.makeText(Asset_update.this,assettags,Toast.LENGTH_SHORT).show();
 
 
                         assestsList.add(assettags);

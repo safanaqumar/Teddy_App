@@ -141,7 +141,7 @@ public class AddUser extends AppCompatActivity {
 
 
                 if (USERPASS.equals(USERCONPASS)) {
-                    checkEmailExistsOrNot();
+
                     firebaseAuth.createUserWithEmailAndPassword(USEREMAIL, USERPASS)
                             .addOnCompleteListener(AddUser.this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -160,7 +160,7 @@ public class AddUser extends AppCompatActivity {
 
 
 
-                                        FirebaseDatabase.getInstance().getReference("users").child(usertype)
+                                        FirebaseDatabase.getInstance().getReference("users")
                                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                 .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
@@ -172,7 +172,7 @@ public class AddUser extends AppCompatActivity {
                                         });
                                     } else {
                                         // If sign in fails, display a message to the user.
-                                        Toast.makeText(AddUser.this, "registration failed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(AddUser.this, "registration failed email already exists", Toast.LENGTH_SHORT).show();
 
                                     }
                                 }

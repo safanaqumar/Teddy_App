@@ -6,10 +6,11 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.SharedMemory;
-import android.preference.PreferenceManager;
-import android.util.Log;
+
+
+
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,30 +27,37 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
 
-    private  CardView logout_cv,Add_asset_cv,update_cv,Track_cv,Report_cv,registeruser_cv,user_profile_cv,latest_activities_cv;
-    public static TextView textviewwelcome , textviewwelcome2;
+    public  CardView logout_cv,Add_asset_cv,update_cv,Track_cv,Report_cv,registeruser_cv,user_profile_cv,latest_activities_cv;
+    public TextView textviewwelcome ;
     DatabaseReference UserDatabaseReference;
     SharedPreferences sharedPreferences;
-    public static String position;
+    public String position,name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textviewwelcome=(TextView)findViewById(R.id.welcometxt);
+
+
       sharedPreferences= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
-
-         position= sharedPreferences.getString("user_position", "");
-
-
-
+       name= sharedPreferences.getString("user_name", "");
+        position= sharedPreferences.getString("user_position", "");
+        textviewwelcome.setText(name);
 
 
 
-       textviewwelcome = (TextView) findViewById(R.id.welcometxt);
 
-       // textviewwelcome2 = (TextView) findViewById(R.id.welcometxt);
-        isDisplay();
+
+
+
+
+
+
+
+
+      //  isDisplay();
 
 
         Add_asset_cv = (CardView) findViewById(R.id.Add_asset_cv);
@@ -60,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
         user_profile_cv = (CardView) findViewById(R.id.profile_cv);
         latest_activities_cv = (CardView) findViewById(R.id.latest_actvites_cv);
         logout_cv =(CardView) findViewById(R.id.logout_cv);
+        if (position.equals("Compilance"))
+        {
+              registeruser_cv.setBackgroundColor(Color.LTGRAY);
+              registeruser_cv.setEnabled(false);
+        }
+
 
 
         update_cv.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +147,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void isDisplay() {
+
+  /*  public void isDisplay() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         Query query = UserDatabaseReference.child(position).child(uid);
@@ -144,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
 
                     String username = dataSnapshot.child("name").getValue(String.class);
-                   textviewwelcome.setText(username+position);
+                   //textviewwelcome.setText(username+position);
 
 
 
@@ -162,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
+    }*/
 
     }
 
