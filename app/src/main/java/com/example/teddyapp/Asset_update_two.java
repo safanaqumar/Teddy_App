@@ -66,8 +66,8 @@ listView.setOnItemClickListener(new ListView.OnItemClickListener() {
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        //itemval = (String) listView.getItemAtPosition(position);
-itemval = parent.getAdapter().getItem(position).toString();
+        itemval = (String) listView.getItemAtPosition(position);
+//itemval = parent.getAdapter().getItem(position).toString();
 
 // Log.i("","" +itemval);
       //  listView.getItemAtPosition(1);

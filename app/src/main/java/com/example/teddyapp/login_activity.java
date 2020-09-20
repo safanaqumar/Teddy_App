@@ -92,7 +92,9 @@ public class login_activity extends AppCompatActivity {
 
                             } else
                                 {
-                            Toast.makeText(login_activity.this, "email or password incorrect", Toast.LENGTH_LONG).show();
+                                    progressBar.setVisibility(View.GONE);
+
+                                    Toast.makeText(login_activity.this, "email or password incorrect", Toast.LENGTH_LONG).show();
 
 
                             }
@@ -129,8 +131,9 @@ public class login_activity extends AppCompatActivity {
 
 
                 } else {
+                    progressBar.setVisibility(View.GONE);
 
-                     Toast.makeText(login_activity.this, "Welcome", Toast.LENGTH_SHORT).show();
+                  //   Toast.makeText(login_activity.this, "Welcome", Toast.LENGTH_SHORT).show();
 
 
                 }
