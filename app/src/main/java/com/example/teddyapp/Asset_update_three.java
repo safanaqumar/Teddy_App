@@ -1,5 +1,6 @@
 package com.example.teddyapp;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,17 +44,21 @@ public class Asset_update_three extends AppCompatActivity {
     public static String description1;
     public static String type1;
     public static String Status1;
+public static   FirebaseAuth auth;
 
-    DatabaseReference reference;
+    public static String keys;
+   DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       reference = FirebaseDatabase.getInstance().getReference("Data");
         setContentView(R.layout.activity_asset_update_three);
         getSupportActionBar().setTitle("Asset Update");
-        qrscanner = (Button) findViewById(R.id.qr);
-        reference = FirebaseDatabase.getInstance().getReference("Data");
-        getSupportActionBar().setTitle("Add New Asset");
+      //  qrscanner = (Button) findViewById(R.id.qr);
+       // reference = FirebaseDatabase.getInstance().getReference("Data");
+        auth = FirebaseAuth.getInstance();
+        keys = auth.getCurrentUser().getUid();
         statusspinner = (Spinner) findViewById(R.id.status);
         Location = (Spinner) findViewById(R.id.loction);
         type = (Spinner) findViewById(R.id.type);
@@ -83,8 +88,8 @@ public class Asset_update_three extends AppCompatActivity {
         spinerstatusdapterdepartment.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Department.setAdapter(spinerstatusdapterdepartment);
 
-        int status = spinerstatusdapter.getPosition(Status1);
-        statusspinner.setSelection(status);
+ /*       int status = spinerstatusdapter.getPosition(Status1);
+        statusspinner.setSelection(status);*/
 
         //Getting the username
         Assettag.setText(assettags1);
@@ -92,13 +97,14 @@ public class Asset_update_three extends AppCompatActivity {
         //User.setText();
         Remark.setText(remark1);
         serialno.setText(Serial_no1);
-        int loc = spinerstatusdapterlocation.getPosition(location1);
+      /*  int loc = spinerstatusdapterlocation.getPosition(location1);
         Location.setSelection(loc);
         int type = spinerstatusdaptertype.getPosition(type1);
         Department.setSelection(type);
 
-
+*/
         data();
+      //  onDestroy();
 
 
     }
@@ -114,7 +120,7 @@ public class Asset_update_three extends AppCompatActivity {
     }
     private boolean isdepartmentchanged() {
         if (!deprt1.equals(Department.getSelectedItem().toString())) {
-            reference.child("deprt").setValue(Department.getSelectedItem().toString());
+            reference.child(keys).child("deprt").setValue(Department.getSelectedItem().toString());
             deprt1 = Department.getSelectedItem().toString();
             return true;
 
@@ -125,10 +131,9 @@ public class Asset_update_three extends AppCompatActivity {
     }
     private boolean islocationchanged(){
         if (!location1.equals(Location.getSelectedItem().toString())) {
-            reference.child("location").setValue(Location.getSelectedItem().toString());
+            reference.child(keys).child("location").setValue(Location.getSelectedItem().toString());
             location1 = Location.getSelectedItem().toString();
             return true;
-
         } else {
             return false;
         }
@@ -138,7 +143,7 @@ public class Asset_update_three extends AppCompatActivity {
 
     private boolean isstatuschanged(){
     if (!Status1.equals(statusspinner.getSelectedItem().toString())) {
-        reference.child("statusasset").setValue(statusspinner.getSelectedItem().toString());
+        reference.child(keys).child("statusasset").setValue(statusspinner.getSelectedItem().toString());
         Status1 = statusspinner.getSelectedItem().toString();
         return true;
 
@@ -147,9 +152,10 @@ public class Asset_update_three extends AppCompatActivity {
     }
 
 }
+    //String key = reference.child("Data").push().getKey();
     private boolean istypeofasset() {
         if (!type1.equals(type.getSelectedItem().toString())) {
-            reference.child("typeofasset").setValue(type.getSelectedItem().toString());
+            reference.child(keys).child("typeofasset").setValue(type.getSelectedItem().toString());
             type1 = type.getSelectedItem().toString();
             return true;
 
@@ -157,10 +163,10 @@ public class Asset_update_three extends AppCompatActivity {
             return false;
         }
     }
-String key = reference.getKey();
+/* String key = reference.getKey();*/
     private boolean isdescriptionchanged(){
         if (!description1.equals(Description.getText().toString())) {
-            reference.child(key).child("description").setValue(Description.getText().toString());
+            reference.child(keys).child("description").setValue(Description.getText().toString());
             description1 = Description.getText().toString();
             return true;
 
@@ -173,7 +179,7 @@ String key = reference.getKey();
 
     private boolean isserialnochanged() {
         if (!Serial_no1.equals(serialno.getText().toString())) {
-            reference.child("serial_num").setValue(serialno.getText().toString());
+            reference.child(keys).child("serial_num").setValue(serialno.getText().toString());
             Serial_no1 = serialno.getText().toString();
             return true;
 
@@ -184,7 +190,7 @@ String key = reference.getKey();
 
     private boolean isremarkchanged() {
         if (!remark1.equals(Remark.getText().toString())) {
-            reference.child("remark").setValue(Remark.getText().toString());
+            reference.child(keys).child("remark").setValue(Remark.getText().toString());
             remark1 = Remark.getText().toString();
             return true;
 
@@ -197,7 +203,7 @@ String key = reference.getKey();
     private boolean isaseettagchanged() {
 
         if (!assettags1.equals(Assettag.getText().toString())) {
-            reference.child("asset_tag").setValue(Assettag.getText().toString());
+            reference.child(keys).child("asset_tag").setValue(Assettag.getText().toString());
             assettags1 = Assettag.getText().toString();
             return true;
 
@@ -210,7 +216,16 @@ String key = reference.getKey();
     }
 
 
-public void data() {
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(getApplicationContext(),MainActivity.class);
+
+        startActivity(intent1);
+        //super.onBackPressed();
+    }
+
+
+    public void data() {
 
 /*        Intent intent = getIntent();
         String at = intent.getStringExtra("asset_tag");
@@ -230,7 +245,7 @@ public void data() {
             //  final Intent intent1 = getIntent();
        /* Intent intent1 = new Intent(Asset_update_two.this,Asset_update_three.class);
         startActivity(intent1);*/
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Data");
+
             // final String selectedval = (String) listView.getSelectedItem();
 //        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             //String val = intent.getStringExtra("typeofasset");
@@ -276,16 +291,19 @@ public void data() {
                     }
                 }
 
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
             });
-        }
-    @Override
+
+    }
+
+    /*@Override
     protected void onDestroy() {
         super.onDestroy();
     }
-
+*/
 
 }

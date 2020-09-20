@@ -11,7 +11,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp">
 
         <ImageView
             android:layout_width="72dp"
@@ -35,12 +35,9 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_below="@+id/app_bar"
-
-        android:layout_marginStart="66dp"
-        android:layout_marginLeft="66dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:gravity="right"
+        android:gravity="center"
         android:text="Welcome Back!"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -63,7 +60,7 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="6dp"
         android:gravity="left"
-        android:text="."
+        android:text=""
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="normal">
@@ -112,7 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-
+       android:gravity="center"
                         android:text="Add New Asset"
                         android:textStyle="bold" />
 
@@ -266,6 +263,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Register User"
+                        android:gravity="center"
                         android:textStyle="bold" />
 
 
@@ -339,7 +337,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:text="Latest Activities"
                         android:textStyle="bold" />

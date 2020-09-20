@@ -61,7 +61,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             style="@style/TextLabel"
             android:layout_weight="1"
             android:hint="Asset Tag"
@@ -74,7 +74,7 @@
                 android:id="@+id/AssetTag"
 android:layout_marginTop="2dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
 
                 />
 
@@ -84,7 +84,7 @@ android:layout_marginTop="2dp"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:id="@+id/qr"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="6dp"
             android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
             android:layout_gravity="center_vertical"
             >

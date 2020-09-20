@@ -43,7 +43,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:weightSum="2"
             android:orientation="horizontal"
             android:clickable="true"
@@ -54,7 +54,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 style="@style/TextLabel"
                 android:layout_weight="1"
                 android:hint="Asset Tag"
@@ -67,7 +67,7 @@
                     android:id="@+id/AssetTag"
                     android:paddingBottom="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
 
                     />
 
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-
+android:layout_marginTop="8sp"
                 android:id="@+id/qr"
                 android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
                 android:layout_gravity="center_vertical"
